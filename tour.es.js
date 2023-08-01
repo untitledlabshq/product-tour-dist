@@ -14588,42 +14588,42 @@ function Gr(n) {
   }));
 }
 function Li(n, t = !1) {
-  const e = n, o = e.map((r, s) => {
-    const a = [];
-    s !== 0 && a.push({
+  const e = new CustomEvent("stepChanged"), o = n, i = o.map((s, a) => {
+    const l = [];
+    a !== 0 && l.push({
       text: "Previous",
       secondary: !0,
       action() {
-        this.back();
+        this.back(), window.dispatchEvent(e);
       }
-    }), s !== e.length - 1 ? a.push({
+    }), a !== o.length - 1 ? l.push({
       text: "Next",
       action() {
-        this.next();
+        this.next(), window.dispatchEvent(e);
       }
-    }) : a.push({
+    }) : l.push({
       text: "Finish",
       action() {
-        this.next();
+        this.next(), window.dispatchEvent(e);
       }
     });
-    let l = null;
-    return r.xpath && (l = is(r.xpath), l.setAttribute(`data-tour-step-${s}`, "")), {
-      ...r,
-      buttons: a,
+    let c = null;
+    return s.xpath && (c = is(s.xpath), c.setAttribute(`data-tour-step-${a}`, "")), {
+      ...s,
+      buttons: l,
       cancelIcon: {
         enabled: !0
       },
-      text: r.text + "<div style='margin-top: 4rem'></div>",
-      attachTo: l ? {
-        element: l.tagName.toLowerCase() + `[data-tour-step-${s}]`,
+      text: s.text + "<div style='margin-top: 4rem'></div>",
+      attachTo: c ? {
+        element: c.tagName.toLowerCase() + `[data-tour-step-${a}]`,
         on: "top"
       } : void 0
     };
   });
-  F.steps = o;
-  const i = Kr(o);
-  return window.ProductTour.restart = i.start, t && i.start(), i.start;
+  F.steps = i;
+  const r = Kr(i);
+  return window.ProductTour.restart = r.start, window.ProductTour.tour = r, t && r.start(), r.start;
 }
 function wd(n) {
   F.newStep.activeType = n;
