@@ -14610,6 +14610,7 @@ function Li(n, t = !1) {
     let c = null;
     return s.xpath && (c = is(s.xpath), c.setAttribute(`data-tour-step-${a}`, "")), {
       ...s,
+      index: a,
       buttons: l,
       cancelIcon: {
         enabled: !0
