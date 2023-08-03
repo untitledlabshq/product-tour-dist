@@ -14509,7 +14509,7 @@ function Kr(n) {
     useModalOverlay: !0,
     defaultStepOptions: {
       cancelIcon: {
-        enabled: !0
+        enabled: !1
       },
       scrollTo: {
         behavior: "smooth",
@@ -14626,9 +14626,6 @@ function Li(n, t = !1) {
       ...s,
       index: a,
       buttons: l,
-      cancelIcon: {
-        enabled: !1
-      },
       title: `Step ${a + 1}`,
       text: `<h3>${s.title}</h3>` + s.text + "<div style='margin-top: 4rem'></div>",
       attachTo: c ? {
