@@ -14849,7 +14849,7 @@ function vn(n) {
       if (!a || !a.steps)
         return;
       const l = Li(a.steps);
-      Id(a.theme.details), Bd() || (l(), _d());
+      Id(a.theme.details), Bd(), l(), _d();
     }
     Di({
       // Global Store
