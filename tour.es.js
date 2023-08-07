@@ -14742,7 +14742,7 @@ window.ProductTour = {
 };
 function vn(n) {
   const t = n || window.ProductTourID;
-  if (!t) {
+  if (console.log("Initializing Product Tour for Project ", t), !t) {
     console.warn("ProductTour: No project ID found");
     return;
   }
