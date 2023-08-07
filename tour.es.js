@@ -14588,16 +14588,20 @@ function Gr(n) {
   }));
 }
 function Li(n, t = !1) {
-  const e = new CustomEvent("stepChanged"), o = n, i = o.map((s, a) => {
-    const l = [];
-    l.push({
+  const e = n, o = e.map((r, s) => {
+    const a = [];
+    a.push({
       text: "Skip",
       secondary: !0,
       classes: "untitled_skip-button",
       action() {
-        this.cancel(), window.dispatchEvent(e);
+        this.cancel();
+        const h = new CustomEvent("stepChanged", {
+          detail: 0
+        });
+        window.dispatchEvent(h);
       }
-    }), a !== 0 && l.push({
+    }), s !== 0 && a.push({
       text: `<div class='untitled_flex-side'">
                 <div class="untitled_flex-side">
                     <svg fill="none" stroke="currentColor" stroke-width="2.5" width="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -14608,48 +14612,62 @@ function Li(n, t = !1) {
                 `,
       secondary: !0,
       action() {
-        this.back(), window.dispatchEvent(e);
+        this.back();
+        const h = new CustomEvent("stepChanged", {
+          detail: s
+        });
+        window.dispatchEvent(h);
       }
-    }), l.push({
-      text: a !== o.length - 1 ? `<div class='untitled_flex-side'><div>Next</div><div class="untitled_flex-side">
+    }), a.push({
+      text: s !== e.length - 1 ? `<div class='untitled_flex-side'><div>Next</div><div class="untitled_flex-side">
                             <svg fill="none" stroke="currentColor" stroke-width="2.5" width="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
                             </svg>
                         </div>
                         </div>` : "Finish</div>",
       action() {
-        this.next(), window.dispatchEvent(e);
+        this.next();
+        const h = new CustomEvent("stepChanged", {
+          detail: s + 1 !== e.length ? s + 2 : 0
+        });
+        window.dispatchEvent(h);
       }
     });
-    let c = null;
-    s.xpath && (c = is(s.xpath), c.setAttribute(`data-tour-step-${a}`, ""));
-    const h = getComputedStyle(
+    let l = null;
+    r.xpath && (l = is(r.xpath), l.setAttribute(`data-tour-step-${s}`, ""));
+    const c = getComputedStyle(
       // @ts-ignore
       document.querySelector(":root")
     ).getPropertyValue("--tour-theme");
     return {
-      ...s,
-      index: a,
-      buttons: l,
+      ...r,
+      index: s,
+      buttons: a,
       // @ts-ignore
       title: `
             <div class="untitled_flex-between" style="width: 100%">
-                <h3>Step ${a + 1}</h3>
+                <h3>Step ${s + 1}</h3>
                 <a href="https://buildoor.xyz" target="_blank" class="untitled_center">
-                    <img src="https://cdn.jsdelivr.net/gh/untitledlabshq/product-tour-dist/Watermark${h}.png" style="max-width: 200px" />
+                    <img src="https://cdn.jsdelivr.net/gh/untitledlabshq/product-tour-dist/Watermark${c}.png" style="max-width: 200px" />
                 </a>
             </div>
             `,
-      text: `<h3>${s.title}</h3>` + s.text + "<div style='margin-top: 4rem'></div>",
-      attachTo: c ? {
-        element: c.tagName.toLowerCase() + `[data-tour-step-${a}]`,
+      text: `<h3>${r.title}</h3>` + r.text + "<div style='margin-top: 4rem'></div>",
+      attachTo: l ? {
+        element: l.tagName.toLowerCase() + `[data-tour-step-${s}]`,
         on: "top"
       } : void 0
     };
   });
-  F.steps = i;
-  const r = Kr(i);
-  return window.ProductTour.restart = r.start, window.ProductTour.tour = r, t && r.start(), r.start;
+  F.steps = o;
+  const i = Kr(o);
+  if (window.ProductTour.restart = i.start, window.ProductTour.tour = i, t) {
+    const r = new CustomEvent("stepChanged", {
+      detail: 1
+    });
+    window.dispatchEvent(r), i.start();
+  }
+  return i.start;
 }
 function kd(n) {
   F.newStep.activeType = n;
@@ -14863,7 +14881,12 @@ function vn(n) {
         return;
       Id(a.theme.details);
       const l = Li(a.steps);
-      Bd() || (l(), _d());
+      if (!Bd()) {
+        const c = new CustomEvent("stepChanged", {
+          detail: 1
+        });
+        window.dispatchEvent(c), l(), _d();
+      }
     }
     Di({
       // Global Store
