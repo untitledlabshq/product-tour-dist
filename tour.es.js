@@ -14742,8 +14742,10 @@ window.ProductTour = {
 };
 function vn(n) {
   const t = n || window.ProductTourID;
-  if (!t)
+  if (!t) {
+    console.warn("ProductTour: No project ID found");
     return;
+  }
   const e = document.createElement("div");
   e.id = "untitled-app", e.innerHTML = `
       <div id="untitled-main" v-scope="Footer()">
