@@ -1,6 +1,6 @@
-var qr = Object.defineProperty;
-var Zr = (n, t, e) => t in n ? qr(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
-var Ho = (n, t, e) => (Zr(n, typeof t != "symbol" ? t + "" : t, e), e);
+var Zr = Object.defineProperty;
+var qr = (n, t, e) => t in n ? Zr(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
+var Ho = (n, t, e) => (qr(n, typeof t != "symbol" ? t + "" : t, e), e);
 import { reactive as Jr, createApp as Di } from "https://unpkg.com/petite-vue?module";
 function $n(n) {
   n.preventDefault();
@@ -773,7 +773,7 @@ function Bt(n) {
 function Tt(n) {
   return n instanceof vt(n).Element;
 }
-function qn(n) {
+function Zn(n) {
   if (typeof ShadowRoot > "u")
     return !1;
   const t = vt(n).ShadowRoot;
@@ -804,7 +804,7 @@ function Cn() {
 function Tn(n) {
   return ["html", "body", "#document"].includes(Kt(n));
 }
-const Zn = Math.min, Re = Math.max, xo = Math.round;
+const qn = Math.min, Re = Math.max, xo = Math.round;
 function Wi(n) {
   const t = At(n);
   let e = parseFloat(t.width), o = parseFloat(t.height);
@@ -860,7 +860,7 @@ function le(n, t, e, o) {
     y: u
   });
 }
-function qt(n) {
+function Zt(n) {
   return ((Vi(n) ? n.ownerDocument : n.document) || window.document).documentElement;
 }
 function Lo(n) {
@@ -878,7 +878,7 @@ function Hs(n) {
     offsetParent: e,
     strategy: o
   } = n;
-  const i = Bt(e), r = qt(e);
+  const i = Bt(e), r = Zt(e);
   if (e === r)
     return t;
   let s = {
@@ -904,10 +904,10 @@ function Hs(n) {
   };
 }
 function Gi(n) {
-  return le(qt(n)).left + Lo(n).scrollLeft;
+  return le(Zt(n)).left + Lo(n).scrollLeft;
 }
 function js(n) {
-  const t = qt(n), e = Lo(n), o = n.ownerDocument.body, i = Re(t.scrollWidth, t.clientWidth, o.scrollWidth, o.clientWidth), r = Re(t.scrollHeight, t.clientHeight, o.scrollHeight, o.clientHeight);
+  const t = Zt(n), e = Lo(n), o = n.ownerDocument.body, i = Re(t.scrollWidth, t.clientWidth, o.scrollWidth, o.clientWidth), r = Re(t.scrollHeight, t.clientHeight, o.scrollHeight, o.clientHeight);
   let s = -e.scrollLeft + Gi(n);
   const a = -e.scrollTop;
   return At(o).direction === "rtl" && (s += Re(t.clientWidth, o.clientWidth) - i), {
@@ -924,23 +924,23 @@ function Ge(n) {
     // Step into the shadow DOM of the parent of a slotted node.
     n.assignedSlot || // DOM Element detected.
     n.parentNode || // ShadowRoot detected.
-    qn(n) && n.host || // Fallback.
-    qt(n)
+    Zn(n) && n.host || // Fallback.
+    Zt(n)
   );
-  return qn(t) ? t.host : t;
+  return Zn(t) ? t.host : t;
 }
-function qi(n) {
+function Zi(n) {
   const t = Ge(n);
-  return Tn(t) ? t.ownerDocument.body : Bt(t) && Ao(t) ? t : qi(t);
+  return Tn(t) ? t.ownerDocument.body : Bt(t) && Ao(t) ? t : Zi(t);
 }
 function Pe(n, t) {
   var e;
   t === void 0 && (t = []);
-  const o = qi(n), i = o === ((e = n.ownerDocument) == null ? void 0 : e.body), r = vt(o);
+  const o = Zi(n), i = o === ((e = n.ownerDocument) == null ? void 0 : e.body), r = vt(o);
   return i ? t.concat(r, r.visualViewport || [], Ao(o) ? o : []) : t.concat(o, Pe(o));
 }
 function Us(n, t) {
-  const e = vt(n), o = qt(n), i = e.visualViewport;
+  const e = vt(n), o = Zt(n), i = e.visualViewport;
   let r = o.clientWidth, s = o.clientHeight, a = 0, l = 0;
   if (i) {
     r = i.width, s = i.height;
@@ -971,7 +971,7 @@ function Jn(n, t, e) {
   if (t === "viewport")
     o = Us(n, e);
   else if (t === "document")
-    o = js(qt(n));
+    o = js(Zt(n));
   else if (Tt(t))
     o = zs(t, e);
   else {
@@ -1007,7 +1007,7 @@ function Vs(n) {
   } = n;
   const s = [...e === "clippingAncestors" ? Ys(t, this._c) : [].concat(e), o], a = s[0], l = s.reduce((c, h) => {
     const d = Jn(t, h, i);
-    return c.top = Re(d.top, c.top), c.right = Zn(d.right, c.right), c.bottom = Zn(d.bottom, c.bottom), c.left = Re(d.left, c.left), c;
+    return c.top = Re(d.top, c.top), c.right = qn(d.right, c.right), c.bottom = qn(d.bottom, c.bottom), c.left = Re(d.left, c.left), c;
   }, Jn(t, a, i));
   return {
     width: l.right - l.left,
@@ -1041,7 +1041,7 @@ function ti(n, t) {
   return o && (Kt(o) === "html" || Kt(o) === "body" && At(o).position === "static" && !Sn(o)) ? e : o || Ws(n) || e;
 }
 function Xs(n, t, e) {
-  const o = Bt(t), i = qt(t), r = le(n, !0, e === "fixed", t);
+  const o = Bt(t), i = Zt(t), r = le(n, !0, e === "fixed", t);
   let s = {
     scrollLeft: 0,
     scrollTop: 0
@@ -1069,7 +1069,7 @@ const Ks = {
   isElement: Tt,
   getDimensions: $s,
   getOffsetParent: ti,
-  getDocumentElement: qt,
+  getDocumentElement: Zt,
   getScale: xe,
   async getElementRects(n) {
     let {
@@ -1119,7 +1119,7 @@ function Gs(n, t, e, o) {
     }), (p = h) == null || p.disconnect(), h = null, a && cancelAnimationFrame(d);
   };
 }
-const qs = (n, t, e) => {
+const Zs = (n, t, e) => {
   const o = /* @__PURE__ */ new Map(), i = ht({
     platform: Ks
   }, e), r = ht({}, i.platform, {
@@ -1129,7 +1129,7 @@ const qs = (n, t, e) => {
     platform: r
   }));
 };
-function Zs(n) {
+function qs(n) {
   n.cleanup && n.cleanup();
   const t = n._getResolvedAttachToOptions();
   let e = t.element;
@@ -1151,7 +1151,7 @@ function Qs(n) {
   n.cleanup && n.cleanup(), n.cleanup = null;
 }
 function ta(n, t, e, o) {
-  return qs(n, t.el, e).then(ea(t, o)).then((i) => new Promise((r) => {
+  return Zs(n, t.el, e).then(ea(t, o)).then((i) => new Promise((r) => {
     setTimeout(() => r(i), 300);
   })).then((i) => {
     i && i.el && i.el.focus({
@@ -1218,14 +1218,14 @@ function ra(n, t) {
     n[e] = t[e];
   return n;
 }
-function Zi(n) {
+function qi(n) {
   return n();
 }
 function ei() {
   return /* @__PURE__ */ Object.create(null);
 }
 function Qe(n) {
-  n.forEach(Zi);
+  n.forEach(qi);
 }
 function Bn(n) {
   return typeof n == "function";
@@ -1281,14 +1281,14 @@ function ca(n) {
 function ue(n, t, e) {
   n.classList[e ? "add" : "remove"](t);
 }
-let qe;
+let Ze;
 function Fe(n) {
-  qe = n;
+  Ze = n;
 }
 function Qi() {
-  if (!qe)
+  if (!Ze)
     throw new Error("Function called outside component initialization");
-  return qe;
+  return Ze;
 }
 function da(n) {
   Qi().$$.on_mount.push(n);
@@ -1311,7 +1311,7 @@ let pe = 0;
 function tr() {
   if (pe !== 0)
     return;
-  const n = qe;
+  const n = Ze;
   do {
     try {
       for (; pe < me.length; ) {
@@ -1394,13 +1394,13 @@ function ga(n, t) {
 function he(n) {
   n && n.c();
 }
-function Zt(n, t, e, o) {
+function qt(n, t, e, o) {
   const {
     fragment: i,
     after_update: r
   } = n.$$;
   i && i.m(t, e), o || on(() => {
-    const s = n.$$.on_mount.map(Zi).filter(Bn);
+    const s = n.$$.on_mount.map(qi).filter(Bn);
     n.$$.on_destroy ? n.$$.on_destroy.push(...s) : Qe(s), n.$$.on_mount = [];
   }), r.forEach(on);
 }
@@ -1413,7 +1413,7 @@ function ma(n, t) {
 }
 function Ut(n, t, e, o, i, r, s, a) {
   a === void 0 && (a = [-1]);
-  const l = qe;
+  const l = Ze;
   Fe(n);
   const c = n.$$ = {
     fragment: null,
@@ -1447,7 +1447,7 @@ function Ut(n, t, e, o, i, r, s, a) {
       c.fragment && c.fragment.l(d), d.forEach(xt);
     } else
       c.fragment && c.fragment.c();
-    t.intro && X(n.$$.fragment), Zt(n, t.target, t.anchor, t.customElement), tr();
+    t.intro && X(n.$$.fragment), qt(n, t.target, t.anchor, t.customElement), tr();
   }
   Fe(l);
 }
@@ -1612,7 +1612,7 @@ function ai(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -1812,7 +1812,7 @@ function li(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -1851,7 +1851,7 @@ function ci(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -2011,7 +2011,7 @@ function di(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -2050,7 +2050,7 @@ function hi(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -2085,7 +2085,7 @@ function ui(n) {
       he(t.$$.fragment);
     },
     m(o, i) {
-      Zt(t, o, i), e = !0;
+      qt(t, o, i), e = !0;
     },
     p(o, i) {
       const r = {};
@@ -2264,7 +2264,7 @@ function Fa(n) {
       ), ue(t, "shepherd-element", !0);
     },
     m(u, f) {
-      It(u, t, f), c && c.m(t, null), Te(t, e), Zt(o, t, null), n[13](t), s = !0, a || (l = No(
+      It(u, t, f), c && c.m(t, null), Te(t, e), qt(o, t, null), n[13](t), s = !0, a || (l = No(
         t,
         "keydown",
         /*handleKeyDown*/
@@ -2669,7 +2669,7 @@ class nn extends yn {
    * @private
    */
   _setupElements() {
-    ct(this.el) || this.destroy(), this.el = this._createTooltipContent(), this.options.advanceOn && ks(this), Zs(this);
+    ct(this.el) || this.destroy(), this.el = this._createTooltipContent(), this.options.advanceOn && ks(this), qs(this);
   }
   /**
    * Triggers `before-show`, generates the tooltip DOM content,
@@ -2879,7 +2879,7 @@ function Ga(n, t, e) {
     16 && e(2, a = Wa(i));
   }, [o, r, a, b, i, l, c, h, d, u, f, E];
 }
-class qa extends zt {
+class Za extends zt {
   constructor(t) {
     super(), Ut(this, t, Ga, Xa, jt, {
       element: 0,
@@ -2912,7 +2912,7 @@ class qa extends zt {
   }
 }
 const Dt = new yn();
-class Za extends yn {
+class qa extends yn {
   /**
    * @param {Object} options The options for the tour
    * @param {boolean | function(): boolean | Promise<boolean> | function(): Promise<boolean>} options.confirmCancel If true, will issue a `window.confirm` before cancelling.
@@ -3095,7 +3095,7 @@ class Za extends yn {
    * @private
    */
   _setupModal() {
-    this.modal = new qa({
+    this.modal = new Za({
       target: this.options.modalContainer || document.body,
       props: {
         classPrefix: this.classPrefix,
@@ -3144,7 +3144,7 @@ Ja ? Object.assign(Dt, {
   Tour: gi,
   Step: gi
 }) : Object.assign(Dt, {
-  Tour: Za,
+  Tour: qa,
   Step: nn
 });
 function or(n) {
@@ -3708,10 +3708,10 @@ var gl = ["evt"], ut = function(t, e) {
     dragEl: C,
     parentEl: J,
     ghostEl: j,
-    rootEl: q,
+    rootEl: Z,
     nextEl: ee,
     lastDownEl: fo,
-    cloneEl: Z,
+    cloneEl: q,
     cloneHidden: $t,
     dragStarted: Oe,
     putSortable: rt,
@@ -3741,16 +3741,16 @@ var gl = ["evt"], ut = function(t, e) {
 function dt(n) {
   fl(Nt({
     putSortable: rt,
-    cloneEl: Z,
+    cloneEl: q,
     targetEl: C,
-    rootEl: q,
+    rootEl: Z,
     oldIndex: ye,
     oldDraggableIndex: Ue,
     newIndex: mt,
     newDraggableIndex: Vt
   }, n));
 }
-var C, J, j, q, ee, fo, Z, $t, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = [], Qt, Et, Vo, $o, yi, xi, Oe, ge, ze, Ye = !1, lo = !1, go, at, Wo = [], rn = !1, Bo = [], Do = typeof document < "u", co = ir, Ei = to || Yt ? "cssFloat" : "float", ml = Do && !rr && !ir && "draggable" in document.createElement("div"), hr = function() {
+var C, J, j, Z, ee, fo, q, $t, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = [], Qt, Et, Vo, $o, yi, xi, Oe, ge, ze, Ye = !1, lo = !1, go, at, Wo = [], rn = !1, Bo = [], Do = typeof document < "u", co = ir, Ei = to || Yt ? "cssFloat" : "float", ml = Do && !rr && !ir && "draggable" in document.createElement("div"), hr = function() {
   if (Do) {
     if (Yt)
       return !1;
@@ -3932,7 +3932,7 @@ P.prototype = /** @lends Sortable.prototype */
     var i = this, r = i.el, s = i.options, a = r.ownerDocument, l;
     if (o && !C && o.parentNode === r) {
       var c = nt(o);
-      if (q = r, C = o, J = C.parentNode, ee = C.nextSibling, fo = o, ao = s.group, P.dragged = C, Qt = {
+      if (Z = r, C = o, J = C.parentNode, ee = C.nextSibling, fo = o, ao = s.group, P.dragged = C, Qt = {
         target: C,
         clientX: (e || t).clientX,
         clientY: (e || t).clientY
@@ -3974,7 +3974,7 @@ P.prototype = /** @lends Sortable.prototype */
     $(t, "mouseup", this._disableDelayedDrag), $(t, "touchend", this._disableDelayedDrag), $(t, "touchcancel", this._disableDelayedDrag), $(t, "mousemove", this._delayedDragTouchMoveHandler), $(t, "touchmove", this._delayedDragTouchMoveHandler), $(t, "pointermove", this._delayedDragTouchMoveHandler);
   },
   _triggerDragStart: function(t, e) {
-    e = e || t.pointerType == "touch" && t, !this.nativeDraggable || e ? this.options.supportPointer ? W(document, "pointermove", this._onTouchMove) : e ? W(document, "touchmove", this._onTouchMove) : W(document, "mousemove", this._onTouchMove) : (W(C, "dragend", this), W(q, "dragstart", this._onDragStart));
+    e = e || t.pointerType == "touch" && t, !this.nativeDraggable || e ? this.options.supportPointer ? W(document, "pointermove", this._onTouchMove) : e ? W(document, "touchmove", this._onTouchMove) : W(document, "mousemove", this._onTouchMove) : (W(C, "dragend", this), W(Z, "dragstart", this._onDragStart));
     try {
       document.selection ? mo(function() {
         document.selection.empty();
@@ -3983,7 +3983,7 @@ P.prototype = /** @lends Sortable.prototype */
     }
   },
   _dragStarted: function(t, e) {
-    if (be = !1, q && C) {
+    if (be = !1, Z && C) {
       ut("dragStarted", this, {
         evt: e
       }), this.nativeDraggable && W(document, "dragover", wl);
@@ -4043,7 +4043,7 @@ P.prototype = /** @lends Sortable.prototype */
   },
   _appendGhost: function() {
     if (!j) {
-      var t = this.options.fallbackOnBody ? document.body : q, e = nt(C, !0, co, !0, t), o = this.options;
+      var t = this.options.fallbackOnBody ? document.body : Z, e = nt(C, !0, co, !0, t), o = this.options;
       if (co) {
         for (at = t; R(at, "position") === "static" && R(at, "transform") === "none" && at !== document; )
           at = at.parentNode;
@@ -4060,8 +4060,8 @@ P.prototype = /** @lends Sortable.prototype */
       this._onDrop();
       return;
     }
-    ut("setupClone", this), P.eventCanceled || (Z = dr(C), Z.removeAttribute("id"), Z.draggable = !1, Z.style["will-change"] = "", this._hideClone(), gt(Z, this.options.chosenClass, !1), P.clone = Z), o.cloneId = mo(function() {
-      ut("clone", o), !P.eventCanceled && (o.options.removeCloneOnHide || q.insertBefore(Z, C), o._hideClone(), dt({
+    ut("setupClone", this), P.eventCanceled || (q = dr(C), q.removeAttribute("id"), q.draggable = !1, q.style["will-change"] = "", this._hideClone(), gt(q, this.options.chosenClass, !1), P.clone = q), o.cloneId = mo(function() {
+      ut("clone", o), !P.eventCanceled && (o.options.removeCloneOnHide || Z.insertBefore(q, C), o._hideClone(), dt({
         sortable: o,
         name: "clone"
       }));
@@ -4085,7 +4085,7 @@ P.prototype = /** @lends Sortable.prototype */
         target: o,
         completed: _,
         onMove: function(io, ro) {
-          return ho(q, e, C, i, io, nt(io), t, ro);
+          return ho(Z, e, C, i, io, nt(io), t, ro);
         },
         changed: E
       }, ft));
@@ -4114,22 +4114,22 @@ P.prototype = /** @lends Sortable.prototype */
       return b;
     if (C.contains(t.target) || o.animated && o.animatingX && o.animatingY || p._ignoreWhileAnimating === o)
       return _(!1);
-    if (Co = !1, c && !a.disabled && (h ? d || (s = J !== q) : rt === this || (this.lastPutMode = ao.checkPull(this, c, C, t)) && l.checkPut(this, c, C, t))) {
+    if (Co = !1, c && !a.disabled && (h ? d || (s = J !== Z) : rt === this || (this.lastPutMode = ao.checkPull(this, c, C, t)) && l.checkPut(this, c, C, t))) {
       if (f = this._getDirection(t, o) === "vertical", i = nt(C), O("dragOverValid"), P.eventCanceled)
         return b;
       if (s)
-        return J = q, B(), this._hideClone(), O("revert"), P.eventCanceled || (ee ? q.insertBefore(C, ee) : q.appendChild(C)), _(!0);
+        return J = Z, B(), this._hideClone(), O("revert"), P.eventCanceled || (ee ? Z.insertBefore(C, ee) : Z.appendChild(C)), _(!0);
       var v = In(e, a.draggable);
       if (!v || El(t, f, this) && !v.animated) {
         if (v === C)
           return _(!1);
-        if (v && e === t.target && (o = v), o && (r = nt(o)), ho(q, e, C, i, o, r, t, !!o) !== !1)
+        if (v && e === t.target && (o = v), o && (r = nt(o)), ho(Z, e, C, i, o, r, t, !!o) !== !1)
           return B(), v && v.nextSibling ? e.insertBefore(C, v.nextSibling) : e.appendChild(C), J = e, E(), _(!0);
       } else if (v && xl(t, f, this)) {
         var m = _e(e, 0, a, !0);
         if (m === C)
           return _(!1);
-        if (o = m, r = nt(o), ho(q, e, C, i, o, r, t, !1) !== !1)
+        if (o = m, r = nt(o), ho(Z, e, C, i, o, r, t, !1) !== !1)
           return B(), e.insertBefore(C, m), J = e, E(), _(!0);
       } else if (o.parentNode === e) {
         r = nt(o);
@@ -4147,7 +4147,7 @@ P.prototype = /** @lends Sortable.prototype */
         ge = o, ze = T;
         var I = o.nextElementSibling, L = !1;
         L = T === 1;
-        var Y = ho(q, e, C, i, o, r, t, L);
+        var Y = ho(Z, e, C, i, o, r, t, L);
         if (Y !== !1)
           return (Y === 1 || Y === -1) && (L = Y === 1), rn = !0, setTimeout(yl, 30), B(), L && !I ? e.appendChild(C) : o.parentNode.insertBefore(C, L ? I : o), w && cr(w, 0, k - w.scrollTop), J = C.parentNode, D !== void 0 && !lo && (go = Math.abs(D - nt(o)[A])), E(), _(!0);
       }
@@ -4172,18 +4172,18 @@ P.prototype = /** @lends Sortable.prototype */
       this._nulling();
       return;
     }
-    be = !1, lo = !1, Ye = !1, clearInterval(this._loopId), clearTimeout(this._dragStartTimer), sn(this.cloneId), sn(this._dragStartId), this.nativeDraggable && ($(document, "drop", this), $(e, "dragstart", this._onDragStart)), this._offMoveEvents(), this._offUpEvents(), He && R(document.body, "user-select", ""), R(C, "transform", ""), t && (Oe && (t.cancelable && t.preventDefault(), !o.dropBubble && t.stopPropagation()), j && j.parentNode && j.parentNode.removeChild(j), (q === J || rt && rt.lastPutMode !== "clone") && Z && Z.parentNode && Z.parentNode.removeChild(Z), C && (this.nativeDraggable && $(C, "dragend", this), Xo(C), C.style["will-change"] = "", Oe && !be && gt(C, rt ? rt.options.ghostClass : this.options.ghostClass, !1), gt(C, this.options.chosenClass, !1), dt({
+    be = !1, lo = !1, Ye = !1, clearInterval(this._loopId), clearTimeout(this._dragStartTimer), sn(this.cloneId), sn(this._dragStartId), this.nativeDraggable && ($(document, "drop", this), $(e, "dragstart", this._onDragStart)), this._offMoveEvents(), this._offUpEvents(), He && R(document.body, "user-select", ""), R(C, "transform", ""), t && (Oe && (t.cancelable && t.preventDefault(), !o.dropBubble && t.stopPropagation()), j && j.parentNode && j.parentNode.removeChild(j), (Z === J || rt && rt.lastPutMode !== "clone") && q && q.parentNode && q.parentNode.removeChild(q), C && (this.nativeDraggable && $(C, "dragend", this), Xo(C), C.style["will-change"] = "", Oe && !be && gt(C, rt ? rt.options.ghostClass : this.options.ghostClass, !1), gt(C, this.options.chosenClass, !1), dt({
       sortable: this,
       name: "unchoose",
       toEl: J,
       newIndex: null,
       newDraggableIndex: null,
       originalEvent: t
-    }), q !== J ? (mt >= 0 && (dt({
+    }), Z !== J ? (mt >= 0 && (dt({
       rootEl: J,
       name: "add",
       toEl: J,
-      fromEl: q,
+      fromEl: Z,
       originalEvent: t
     }), dt({
       sortable: this,
@@ -4194,7 +4194,7 @@ P.prototype = /** @lends Sortable.prototype */
       rootEl: J,
       name: "sort",
       toEl: J,
-      fromEl: q,
+      fromEl: Z,
       originalEvent: t
     }), dt({
       sortable: this,
@@ -4219,7 +4219,7 @@ P.prototype = /** @lends Sortable.prototype */
     }), this.save()))), this._nulling();
   },
   _nulling: function() {
-    ut("nulling", this), q = C = J = j = ee = Z = fo = $t = Qt = Et = Oe = mt = Vt = ye = Ue = ge = ze = rt = ao = P.dragged = P.ghost = P.clone = P.active = null, Bo.forEach(function(t) {
+    ut("nulling", this), Z = C = J = j = ee = q = fo = $t = Qt = Et = Oe = mt = Vt = ye = Ue = ge = ze = rt = ao = P.dragged = P.ghost = P.clone = P.active = null, Bo.forEach(function(t) {
       t.checked = !0;
     }), Bo.length = Vo = $o = 0;
   },
@@ -4303,7 +4303,7 @@ P.prototype = /** @lends Sortable.prototype */
     if (!$t) {
       if (ut("hideClone", this), P.eventCanceled)
         return;
-      R(Z, "display", "none"), this.options.removeCloneOnHide && Z.parentNode && Z.parentNode.removeChild(Z), $t = !0;
+      R(q, "display", "none"), this.options.removeCloneOnHide && q.parentNode && q.parentNode.removeChild(q), $t = !0;
     }
   },
   _showClone: function(t) {
@@ -4314,7 +4314,7 @@ P.prototype = /** @lends Sortable.prototype */
     if ($t) {
       if (ut("showClone", this), P.eventCanceled)
         return;
-      C.parentNode == q && !this.options.group.revertClone ? q.insertBefore(Z, C) : ee ? q.insertBefore(Z, ee) : q.appendChild(Z), this.options.group.revertClone && this.animate(C, Z), R(Z, "display", ""), $t = !1;
+      C.parentNode == Z && !this.options.group.revertClone ? Z.insertBefore(q, C) : ee ? Z.insertBefore(q, ee) : Z.appendChild(q), this.options.group.revertClone && this.animate(C, q), R(q, "display", ""), $t = !1;
     }
   }
 };
@@ -4448,18 +4448,18 @@ function _l() {
     _handleAutoScroll: function(e, o) {
       var i = this, r = (e.touches ? e.touches[0] : e).clientX, s = (e.touches ? e.touches[0] : e).clientY, a = document.elementFromPoint(r, s);
       if (_o = e, o || this.options.forceAutoScrollFallback || to || Yt || He) {
-        qo(e, this.options, a, o);
+        Zo(e, this.options, a, o);
         var l = Xt(a, !0);
         ln && (!Le || r !== Ko || s !== Go) && (Le && Si(), Le = setInterval(function() {
           var c = Xt(document.elementFromPoint(r, s), !0);
-          c !== l && (l = c, bo()), qo(e, i.options, c, o);
+          c !== l && (l = c, bo()), Zo(e, i.options, c, o);
         }, 10), Ko = r, Go = s);
       } else {
         if (!this.options.bubbleScroll || Xt(a, !0) === Ot()) {
           bo();
           return;
         }
-        qo(e, this.options, Xt(a, !1), !1);
+        Zo(e, this.options, Xt(a, !1), !1);
       }
     }
   }, Ft(n, {
@@ -4475,7 +4475,7 @@ function bo() {
 function Si() {
   clearInterval(Le);
 }
-var qo = lr(function(n, t, e, o) {
+var Zo = lr(function(n, t, e, o) {
   if (t.scroll) {
     var i = (n.touches ? n.touches[0] : n).clientX, r = (n.touches ? n.touches[0] : n).clientY, s = t.scrollSensitivity, a = t.scrollSpeed, l = Ot(), c = !1, h;
     an !== e && (an = e, bo(), Ae = t.scroll, h = t.scrollFn, Ae === !0 && (Ae = Xt(e, !0)));
@@ -4650,11 +4650,11 @@ var Nl = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
 function Ro(n) {
   return n && n.__esModule && Object.prototype.hasOwnProperty.call(n, "default") ? n.default : n;
 }
-function Zo() {
+function qo() {
 }
-Object.assign(Zo, {
-  default: Zo,
-  register: Zo,
+Object.assign(qo, {
+  default: qo,
+  register: qo,
   revert: function() {
   },
   __esModule: !0
@@ -5321,14 +5321,14 @@ const Kl = {
   Link: "",
   Bold: "",
   Italic: ""
-}, ql = {
+}, Zl = {
   link: {
     "Add a link": ""
   },
   stub: {
     "The block can not be displayed correctly.": ""
   }
-}, Zl = {
+}, ql = {
   delete: {
     Delete: "",
     "Click to delete": ""
@@ -5342,8 +5342,8 @@ const Kl = {
 }, Cr = {
   ui: Kl,
   toolNames: Gl,
-  tools: ql,
-  blockTunes: Zl
+  tools: Zl,
+  blockTunes: ql
 }, ve = class {
   /**
    * Type-safe translation for internal UI texts:
@@ -8357,7 +8357,7 @@ var Dc = Object.defineProperty, Rc = Object.getOwnPropertyDescriptor, Pc = (n, t
   for (var i = o > 1 ? void 0 : o ? Rc(t, e) : t, r = n.length - 1, s; r >= 0; r--)
     (s = n[r]) && (i = (o ? s(t, e, i) : s(i)) || i);
   return o && i && Dc(t, e, i), i;
-}, Ze = /* @__PURE__ */ ((n) => (n.Close = "close", n))(Ze || {});
+}, qe = /* @__PURE__ */ ((n) => (n.Close = "close", n))(qe || {});
 const it = class extends Po {
   /**
    * Constructs the instance
@@ -8639,7 +8639,7 @@ class Fc extends V {
         nothingFound: pt.ui(Ct.ui.popover, "Nothing found"),
         search: pt.ui(Ct.ui.popover, "Filter")
       }
-    }), this.popover.on(Ze.Close, this.onPopoverClose), this.nodes.wrapper.append(this.popover.getElement()), this.popover.show();
+    }), this.popover.on(qe.Close, this.onPopoverClose), this.nodes.wrapper.append(this.popover.getElement()), this.popover.show();
   }
   /**
    * Returns root block settings element
@@ -8651,7 +8651,7 @@ class Fc extends V {
    * Close Block Settings pane
    */
   close() {
-    this.opened = !1, N.isAtEditor || this.selection.restore(), this.selection.clearSaved(), !this.Editor.CrossBlockSelection.isCrossBlockSelectionStarted && this.Editor.BlockManager.currentBlock && (this.Editor.BlockManager.currentBlock.selected = !1), this.eventsDispatcher.emit(this.events.closed), this.popover && (this.popover.off(Ze.Close, this.onPopoverClose), this.popover.destroy(), this.popover.getElement().remove(), this.popover = null);
+    this.opened = !1, N.isAtEditor || this.selection.restore(), this.selection.clearSaved(), !this.Editor.CrossBlockSelection.isCrossBlockSelectionStarted && this.Editor.BlockManager.currentBlock && (this.Editor.BlockManager.currentBlock.selected = !1), this.eventsDispatcher.emit(this.events.closed), this.popover && (this.popover.off(qe.Close, this.onPopoverClose), this.popover.destroy(), this.popover.getElement().remove(), this.popover = null);
   }
   /**
    * Returns list of buttons and inputs inside specified container
@@ -9052,7 +9052,7 @@ const Dr = class extends Po {
         search: this.i18nLabels.filter
       },
       items: this.toolboxItemsToBeDisplayed
-    }), this.popover.on(Ze.Close, this.onPopoverClose), this.enableShortcuts(), this.nodes.toolbox = this.popover.getElement(), this.nodes.toolbox.classList.add(Dr.CSS.toolbox), this.nodes.toolbox;
+    }), this.popover.on(qe.Close, this.onPopoverClose), this.enableShortcuts(), this.nodes.toolbox = this.popover.getElement(), this.nodes.toolbox.classList.add(Dr.CSS.toolbox), this.nodes.toolbox;
   }
   /**
    * Returns true if the Toolbox has the Flipper activated and the Flipper has selected button
@@ -9066,7 +9066,7 @@ const Dr = class extends Po {
    */
   destroy() {
     var n;
-    super.destroy(), this.nodes && this.nodes.toolbox && (this.nodes.toolbox.remove(), this.nodes.toolbox = null), this.removeAllShortcuts(), (n = this.popover) == null || n.off(Ze.Close, this.onPopoverClose);
+    super.destroy(), this.nodes && this.nodes.toolbox && (this.nodes.toolbox.remove(), this.nodes.toolbox = null), this.removeAllShortcuts(), (n = this.popover) == null || n.off(qe.Close, this.onPopoverClose);
   }
   /**
    * Toolbox Tool's button click handler
@@ -10666,7 +10666,7 @@ class Gc extends V {
     }), e;
   }
 }
-class qc extends V {
+class Zc extends V {
   constructor() {
     super(...arguments), this.anyBlockSelectedCache = null, this.needToSelectAll = !1, this.nativeInputSelected = !1, this.readyToBlockSelection = !1;
   }
@@ -11137,7 +11137,7 @@ class Mo extends V {
     return i;
   }
 }
-class Zc extends V {
+class qc extends V {
   constructor() {
     super(...arguments), this.onMouseUp = () => {
       this.listeners.off(document, "mouseover", this.onMouseOver), this.listeners.off(document, "mouseup", this.onMouseUp);
@@ -13856,9 +13856,9 @@ const gd = {
   // Modules
   BlockEvents: Wc,
   BlockManager: Gc,
-  BlockSelection: qc,
+  BlockSelection: Zc,
   Caret: Mo,
-  CrossBlockSelection: Zc,
+  CrossBlockSelection: qc,
   DragNDrop: Jc,
   ModificationsObserver: Qc,
   Paste: jr,
@@ -14648,7 +14648,7 @@ function Li(n, t = !1) {
             <div class="untitled_flex-between" style="width: 100%">
                 <h3>Step ${s + 1}</h3>
                 <a href="https://buildoor.xyz" target="_blank" class="untitled_center">
-                    <img src="https://cdn.jsdelivr.net/gh/untitledlabshq/product-tour-dist/Watermark${c}.png" style="max-width: 200px" />
+                    <img src="https://product-tour-dist.vercel.app/Watermark${c}.png" style="max-width: 200px" />
                 </a>
             </div>
             `,
@@ -14734,7 +14734,7 @@ function _d() {
 function Id(n) {
   const t = document.querySelector(":root");
   for (const e of n)
-    e.id === "colorMode" && (e.value === "light" ? (t.style.setProperty("--tour-theme", "Light"), t.style.setProperty("--tour-secondaryTextColor", "#00000f"), t.style.setProperty("--tour-background", "white"), t.style.setProperty("--tour-foreground", "#00000f"), t.style.setProperty("--tour-subtitleColor", "#6b7280"), t.style.setProperty("--untitled_watermark-image", "url('https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/wni7cdqreqa0xq1nxjqp')")) : e.value === "dark" && (t.style.setProperty("--tour-theme", "Dark"), t.style.setProperty("--tour-secondaryTextColor", "white"), t.style.setProperty("--tour-background", "#00000f"), t.style.setProperty("--tour-foreground", "white"), t.style.setProperty("--tour-subtitleColor", "#9ca3af"), t.style.setProperty("--untitled_watermark-image", "url('https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/wni7cdqreqa0xq1nxjqp')"))), t.style.setProperty("--tour-" + e.id, e.value);
+    e.id === "colorMode" && (e.value === "light" ? (t.style.setProperty("--tour-theme", "Light"), t.style.setProperty("--tour-secondaryTextColor", "#00000f"), t.style.setProperty("--tour-background", "white"), t.style.setProperty("--tour-foreground", "#00000f"), t.style.setProperty("--tour-subtitleColor", "#6b7280")) : e.value === "dark" && (t.style.setProperty("--tour-theme", "Dark"), t.style.setProperty("--tour-secondaryTextColor", "white"), t.style.setProperty("--tour-background", "#00000f"), t.style.setProperty("--tour-foreground", "white"), t.style.setProperty("--tour-subtitleColor", "#9ca3af"))), t.style.setProperty("--tour-" + e.id, e.value);
 }
 window.ProductTour = {
   init: vn,
