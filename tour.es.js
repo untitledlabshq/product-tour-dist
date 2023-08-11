@@ -14707,12 +14707,20 @@ function Sd(n) {
   }) : console.warn("Unable to set up drag-and-drop sorting for tour steps");
 }
 function Cd() {
-  function n() {
-    Al(F.accessToken, F.tourId, F.steps);
-  }
   return {
     $template: "#footer",
-    saveSteps: n
+    loading: !1,
+    message: "",
+    timeout: null,
+    async saveSteps() {
+      try {
+        this.loading = !0, await Al(F.accessToken, F.tourId, F.steps), this.message = "Saved", this.timeout && clearTimeout(this.timeout), this.timeout = setTimeout(() => {
+          this.message = "";
+        }, 2e3), this.loading = !1;
+      } catch (n) {
+        this.loading = !1, console.error("Error while saving.", n);
+      }
+    }
   };
 }
 async function Td(n) {
@@ -14811,8 +14819,9 @@ function vn(n) {
                   <div class="untitled_flex-side">
                     <img src="https://avatars.githubusercontent.com/u/76592198?s=200&v=4" width="30" height="30" style="border: 1px solid white;border-radius: 6px; margin-top:4px;" />
                   </div>
-                  <div>
-                      <button class="untitled_secondary-button" @click="saveSteps">Save</button>
+                  <div class="untitled_flex-side">
+                      <p style="font-size: 0.68rem">{{ message }}</p>
+                      <button class="untitled_secondary-button" @click="saveSteps" :disabled="loading">{{loading ? "Saving..." : "Save"}}</button>
                   </div>
               </div>
           </footer>
