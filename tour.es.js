@@ -14718,7 +14718,9 @@ function Cd() {
           this.message = "";
         }, 2e3), this.loading = !1;
       } catch (n) {
-        this.loading = !1, console.error("Error while saving.", n);
+        this.loading = !1, this.message = "Error", this.timeout && clearTimeout(this.timeout), this.timeout = setTimeout(() => {
+          this.message = "";
+        }, 2e3), console.error("Error while saving.", n);
       }
     }
   };
