@@ -227,7 +227,7 @@
               </div>
               <div class="bottom untitled_flex-between">
                   <div class="untitled_flex-side">
-                    <img src="https://avatars.githubusercontent.com/u/76592198?s=200&v=4" width="30" height="30" style="border: 1px solid white;border-radius: 6px; margin-top:4px;" />
+                    <img src="https://product-tour-dashboard.vercel.app/logo_white.png" height="24" />
                   </div>
                   <div class="untitled_flex-side">
                       <p style="font-size: 0.68rem">{{ message }}</p>
