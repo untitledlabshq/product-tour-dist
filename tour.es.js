@@ -14640,7 +14640,7 @@ function Ni(n, t = !1) {
       }
     });
     let l = null;
-    r.xpath && (l = rs(r.xpath), l.setAttribute(`data-tour-step-${s}`, ""));
+    r.xpath && (l = rs(r.xpath), l ? l.setAttribute(`data-tour-step-${s}`, "") : console.warn("Could not locate element for xpath", r.xpath));
     const c = getComputedStyle(
       // @ts-ignore
       document.querySelector(":root")

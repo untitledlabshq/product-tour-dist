@@ -158,7 +158,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
                             </svg>
                         </div>
-                        </div>`:"Finish</div>",action(){this.next();const h=new CustomEvent("stepChanged",{detail:s+1!==e.length?s+2:0});window.dispatchEvent(h),s===e.length-1&&Wr()}});let l=null;r.xpath&&(l=ns(r.xpath),l.setAttribute(`data-tour-step-${s}`,""));const c=getComputedStyle(document.querySelector(":root")).getPropertyValue("--tour-theme");return{...r,index:s,buttons:a,title:`
+                        </div>`:"Finish</div>",action(){this.next();const h=new CustomEvent("stepChanged",{detail:s+1!==e.length?s+2:0});window.dispatchEvent(h),s===e.length-1&&Wr()}});let l=null;r.xpath&&(l=ns(r.xpath),l?l.setAttribute(`data-tour-step-${s}`,""):console.warn("Could not locate element for xpath",r.xpath));const c=getComputedStyle(document.querySelector(":root")).getPropertyValue("--tour-theme");return{...r,index:s,buttons:a,title:`
             <div class="untitled_flex-between" style="width: 100%">
                 <h3>Step ${s+1}</h3>
                 <a href="https://buildoor.xyz" target="_blank" class="untitled_center">
