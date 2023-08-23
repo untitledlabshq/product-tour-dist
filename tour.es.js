@@ -113,8 +113,9 @@ function is(n) {
   return es(n, !1);
 }
 function rs(n) {
+  const t = n.replace("/svg", "/*[local-name()='svg']");
   return document.evaluate(
-    n,
+    t,
     document,
     null,
     XPathResult.FIRST_ORDERED_NODE_TYPE,
