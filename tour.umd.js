@@ -161,7 +161,7 @@
                         </div>`:"Finish</div>",action(){this.next();const h=new CustomEvent("stepChanged",{detail:s+1!==e.length?s+2:0});window.dispatchEvent(h),s===e.length-1&&Wr()}});let l=null;r.xpath&&(l=ns(r.xpath),l?l.setAttribute(`data-tour-step-${s}`,""):console.warn("Could not locate element for xpath",r.xpath));const c=getComputedStyle(document.querySelector(":root")).getPropertyValue("--tour-theme");return{...r,index:s,buttons:a,title:`
             <div class="untitled_flex-between" style="width: 100%">
                 <h3>Step ${s+1}</h3>
-                <a href="https://buildoor.xyz" target="_blank" class="untitled_center">
+                <a href="https://buildoor.xyz" target="_blank" class="untitled_center" style="margin-bottom: 7px">
                     <img src="https://product-tour-dist.vercel.app/Watermark${c}.png" style="max-width: 120px" />
                 </a>
             </div>

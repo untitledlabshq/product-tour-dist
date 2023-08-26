@@ -14654,7 +14654,7 @@ function Ni(n, t = !1) {
       title: `
             <div class="untitled_flex-between" style="width: 100%">
                 <h3>Step ${s + 1}</h3>
-                <a href="https://buildoor.xyz" target="_blank" class="untitled_center">
+                <a href="https://buildoor.xyz" target="_blank" class="untitled_center" style="margin-bottom: 7px">
                     <img src="https://product-tour-dist.vercel.app/Watermark${c}.png" style="max-width: 120px" />
                 </a>
             </div>
