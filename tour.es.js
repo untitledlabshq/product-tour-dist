@@ -14752,13 +14752,17 @@ window.ProductTour = {
   restart: null
 };
 function vn(n) {
-  const t = n || window.ProductTourID;
-  if (console.log("Initializing Product Tour for Project ", t), !t) {
+  const t = document.createElement("link");
+  t.rel = "stylesheet", t.href = "https://product-tour-dist.vercel.app/tour.css";
+  const e = document.head;
+  e ? e.appendChild(t) : document.body.appendChild(t);
+  const o = n || window.ProductTourID;
+  if (console.log("Initializing Product Tour for Project ", o), !o) {
     console.warn("ProductTour: No project ID found");
     return;
   }
-  const e = document.createElement("div");
-  e.id = "untitled-app", e.innerHTML = `
+  const i = document.createElement("div");
+  i.id = "untitled-app", i.innerHTML = `
       <div id="untitled-main" v-scope="Footer()">
       </div>
 
@@ -14874,32 +14878,32 @@ function vn(n) {
         <input id="file-input-image" type="file" accept="video/*" style="display: none" @change="uploadVideo" />
         <div style="margin-bottom: 3rem"></div>
       </template>
-`, document.body.append(e);
-  async function o() {
-    if (!t)
+`, document.body.append(i);
+  async function r() {
+    if (!o)
       return;
-    F.projectId = t;
-    const i = new URLSearchParams(window.location.search), r = i.get("tourToken"), s = i.get("tourId");
-    if (r && r.length > 0) {
-      if (F.accessToken = r, F.tourId = s, !s)
+    F.projectId = o;
+    const s = new URLSearchParams(window.location.search), a = s.get("tourToken"), l = s.get("tourId");
+    if (a && a.length > 0) {
+      if (F.accessToken = a, F.tourId = l, !l)
         return;
-      _d(r).then(async () => {
-        const a = await Al(s);
-        a && F.setSteps(a), F.setAdminMode(!0);
+      _d(a).then(async () => {
+        const c = await Al(l);
+        c && F.setSteps(c), F.setAdminMode(!0);
       }).catch(() => {
         console.error("Unable to validate access token");
       });
     } else {
-      const a = await vr(t);
-      if (!a || !a.steps)
+      const c = await vr(o);
+      if (!c || !c.steps)
         return;
-      Id(a.theme.details);
-      const l = Ni(a.steps);
+      Id(c.theme.details);
+      const h = Ni(c.steps);
       if (!yd()) {
-        const c = new CustomEvent("stepChanged", {
+        const d = new CustomEvent("stepChanged", {
           detail: 1
         });
-        window.dispatchEvent(c), l();
+        window.dispatchEvent(d), h();
       }
     }
     Ri({
@@ -14913,6 +14917,6 @@ function vn(n) {
       Footer: Bd
     }).mount("#untitled-main"), Td("untitled-steps");
   }
-  o();
+  r();
 }
 document.readyState === "complete" ? vn() : window.addEventListener("load", () => vn());
