@@ -14922,7 +14922,7 @@ function vn(n) {
       const d = Ni(h.steps, !1, {
         useModalOverlay: ((c = h.theme.details.find(
           (u) => u.id === "modalOverlay"
-        )) == null ? void 0 : c.value) !== "false"
+        )) == null ? void 0 : c.value) ?? !0
       });
       if (!xd()) {
         const u = new CustomEvent("stepChanged", {
