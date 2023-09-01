@@ -14756,7 +14756,7 @@ async function Id(n) {
 function Md(n) {
   const t = document.querySelector(":root");
   for (const e of n)
-    e.id === "colorMode" && (e.value === "light" ? (t.style.setProperty("--tour-theme", "Light"), t.style.setProperty("--tour-secondaryTextColor", "#00000f"), t.style.setProperty("--tour-background", "white"), t.style.setProperty("--tour-foreground", "#00000f"), t.style.setProperty("--tour-subtitleColor", "#6b7280")) : e.value === "dark" && (t.style.setProperty("--tour-theme", "Dark"), t.style.setProperty("--tour-secondaryTextColor", "white"), t.style.setProperty("--tour-background", "#00000f"), t.style.setProperty("--tour-foreground", "white"), t.style.setProperty("--tour-subtitleColor", "#9ca3af"))), t.style.setProperty("--tour-" + e.id, e.value);
+    e.id === "colorMode" && (e.value === "light" ? (t.style.setProperty("--tour-theme", "Light"), t.style.setProperty("--tour-secondaryTextColor", "#00000f"), t.style.setProperty("--tour-background", "white"), t.style.setProperty("--tour-foreground", "#00000f"), t.style.setProperty("--tour-subtitleColor", "#6b7280")) : e.value === "dark" && (t.style.setProperty("--tour-theme", "Dark"), t.style.setProperty("--tour-secondaryTextColor", "white"), t.style.setProperty("--tour-background", "#00000f"), t.style.setProperty("--tour-foreground", "white"), t.style.setProperty("--tour-subtitleColor", "#9ca3af"), t.style.setProperty("--tour-arrowFilter", "invert()"))), t.style.setProperty("--tour-" + e.id, e.value);
 }
 window.ProductTour = {
   init: vn,
