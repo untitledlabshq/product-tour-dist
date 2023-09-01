@@ -14518,9 +14518,9 @@ function xd() {
 function Li() {
   localStorage.setItem("productTour_seen", "true");
 }
-function Gr(n) {
-  const t = new Dt.Tour({
-    useModalOverlay: !0,
+function Gr(n, t) {
+  const e = new Dt.Tour({
+    useModalOverlay: (t == null ? void 0 : t.useModalOverlay) ?? !0,
     defaultStepOptions: {
       cancelIcon: {
         enabled: !1
@@ -14531,7 +14531,7 @@ function Gr(n) {
       }
     }
   });
-  return t.addSteps(n || F.steps), t;
+  return e.addSteps(n || F.steps), e;
 }
 function Zr(n) {
   F.newStep.activeElement = n;
@@ -14605,21 +14605,21 @@ function Zr(n) {
     }
   }));
 }
-function Ni(n, t = !1) {
-  const e = n, o = e.map((r, s) => {
-    const a = [];
-    a.push({
+function Ni(n, t = !1, e) {
+  const o = n, i = o.map((s, a) => {
+    const l = [];
+    l.push({
       text: "Skip",
       secondary: !0,
       classes: "untitled_skip-button",
       action() {
         this.cancel();
-        const h = new CustomEvent("stepChanged", {
+        const d = new CustomEvent("stepChanged", {
           detail: 0
         });
-        window.dispatchEvent(h), Li();
+        window.dispatchEvent(d), Li();
       }
-    }), s !== 0 && a.push({
+    }), a !== 0 && l.push({
       text: `<div class='untitled_flex-side'">
                 <div class="untitled_flex-side">
                     <svg fill="none" stroke="currentColor" stroke-width="2.5" width="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -14631,13 +14631,13 @@ function Ni(n, t = !1) {
       secondary: !0,
       action() {
         this.back();
-        const h = new CustomEvent("stepChanged", {
-          detail: s
+        const d = new CustomEvent("stepChanged", {
+          detail: a
         });
-        window.dispatchEvent(h);
+        window.dispatchEvent(d);
       }
-    }), a.push({
-      text: s !== e.length - 1 ? `<div class='untitled_flex-side'><div>Next</div><div class="untitled_flex-side">
+    }), l.push({
+      text: a !== o.length - 1 ? `<div class='untitled_flex-side'><div>Next</div><div class="untitled_flex-side">
                             <svg fill="none" stroke="currentColor" stroke-width="2.5" width="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
                             </svg>
@@ -14645,47 +14645,47 @@ function Ni(n, t = !1) {
                         </div>` : "Finish</div>",
       action() {
         this.next();
-        const h = new CustomEvent("stepChanged", {
-          detail: s + 1 !== e.length ? s + 2 : 0
+        const d = new CustomEvent("stepChanged", {
+          detail: a + 1 !== o.length ? a + 2 : 0
         });
-        window.dispatchEvent(h), s === e.length - 1 && Li();
+        window.dispatchEvent(d), a === o.length - 1 && Li();
       }
     });
-    let l = null;
-    r.xpath && (l = rs(r.xpath), l ? l.setAttribute(`data-tour-step-${s}`, "") : console.warn("Could not locate element for xpath", r.xpath));
-    const c = getComputedStyle(
+    let c = null;
+    s.xpath && (c = rs(s.xpath), c ? c.setAttribute(`data-tour-step-${a}`, "") : console.warn("Could not locate element for xpath", s.xpath));
+    const h = getComputedStyle(
       // @ts-ignore
       document.querySelector(":root")
     ).getPropertyValue("--tour-theme");
     return {
-      ...r,
-      index: s,
-      buttons: a,
+      ...s,
+      index: a,
+      buttons: l,
       // @ts-ignore
       title: `
             <div class="untitled_flex-between" style="width: 100%">
-                <h3>Step ${s + 1}</h3>
+                <h3>Step ${a + 1}</h3>
                 <a href="https://buildoor.xyz" target="_blank" class="untitled_center" style="margin-bottom: 7px">
-                    <img src="https://product-tour-dist.vercel.app/Watermark${c}.png" style="max-width: 120px" />
+                    <img src="https://product-tour-dist.vercel.app/Watermark${h}.png" style="max-width: 120px" />
                 </a>
             </div>
             `,
-      text: `<h3>${r.title}</h3>` + r.text + "<div style='margin-top: 4rem'></div>",
-      attachTo: l ? {
-        element: l.tagName.toLowerCase() + `[data-tour-step-${s}]`,
-        on: r.position ?? "top"
+      text: `<h3>${s.title}</h3>` + s.text + "<div style='margin-top: 4rem'></div>",
+      attachTo: c ? {
+        element: c.tagName.toLowerCase() + `[data-tour-step-${a}]`,
+        on: s.position ?? "top"
       } : void 0
     };
   });
-  F.steps = o;
-  const i = Gr(o);
-  if (window.ProductTour.restart = i.start, window.ProductTour.tour = i, t) {
-    const r = new CustomEvent("stepChanged", {
+  F.steps = i;
+  const r = Gr(i, e);
+  if (window.ProductTour.restart = r.start, window.ProductTour.tour = r, t) {
+    const s = new CustomEvent("stepChanged", {
       detail: 1
     });
-    window.dispatchEvent(r), i.start();
+    window.dispatchEvent(s), r.start();
   }
-  return i.start;
+  return r.start;
 }
 function Ed(n) {
   F.newStep.activeType = n;
@@ -14900,6 +14900,7 @@ function vn(n) {
       </template>
 `, document.body.append(i);
   async function r() {
+    var c;
     if (!o)
       return;
     F.projectId = o;
@@ -14908,22 +14909,26 @@ function vn(n) {
       if (F.accessToken = a, F.tourId = l, !l)
         return;
       Id(a).then(async () => {
-        const c = await Al(l);
-        c && F.setSteps(c), F.setAdminMode(!0);
+        const h = await Al(l);
+        h && F.setSteps(h), F.setAdminMode(!0);
       }).catch(() => {
         console.error("Unable to validate access token");
       });
     } else {
-      const c = await vr(o);
-      if (!c || !c.steps)
+      const h = await vr(o);
+      if (!h || !h.steps)
         return;
-      Md(c.theme.details);
-      const h = Ni(c.steps);
+      Md(h.theme.details);
+      const d = Ni(h.steps, !1, {
+        useModalOverlay: ((c = h.theme.details.find(
+          (u) => u.id === "modal-overlay"
+        )) == null ? void 0 : c.value) !== "false"
+      });
       if (!xd()) {
-        const d = new CustomEvent("stepChanged", {
+        const u = new CustomEvent("stepChanged", {
           detail: 1
         });
-        window.dispatchEvent(d), h();
+        window.dispatchEvent(u), d();
       }
     }
     Ri({
