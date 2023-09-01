@@ -14921,7 +14921,7 @@ function vn(n) {
       Md(h.theme.details);
       const d = Ni(h.steps, !1, {
         useModalOverlay: ((c = h.theme.details.find(
-          (u) => u.id === "modal-overlay"
+          (u) => u.id === "modalOverlay"
         )) == null ? void 0 : c.value) !== "false"
       });
       if (!xd()) {
