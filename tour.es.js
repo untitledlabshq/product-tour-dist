@@ -3267,7 +3267,7 @@ const nl = /* @__PURE__ */ nr(ol), F = Qr({
       xpath: t ? is(t) : null
       // xpath can be null for full-page modals (without attachTo, that is)
     };
-    this.steps.push(e), (o = Dt.activeTour) == null || o.cancel(), this.newStep.title = "", this.newStep.content = "", this.newStep.mediaURL = "";
+    this.steps.push(e), (o = Dt.activeTour) == null || o.cancel(), this.newStep.title = "", this.newStep.content = "", this.newStep.mediaURL = "", this.newStep.position = "top";
   },
   removeStep(n) {
     this.steps = this.steps.filter((t) => t !== n);
