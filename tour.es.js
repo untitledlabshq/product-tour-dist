@@ -2,10 +2,10 @@ var qr = Object.defineProperty;
 var Jr = (n, t, e) => t in n ? qr(n, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : n[t] = e;
 var Ho = (n, t, e) => (Jr(n, typeof t != "symbol" ? t + "" : t, e), e);
 import { reactive as Qr, createApp as Ri } from "https://unpkg.com/petite-vue?module";
-function $n(n) {
+function Wn(n) {
   n.preventDefault();
 }
-function Wn(n) {
+function $n(n) {
   n.stopPropagation();
 }
 function ts(n, t, e) {
@@ -755,14 +755,14 @@ function vt(n) {
 function At(n) {
   return vt(n).getComputedStyle(n);
 }
-function $i(n) {
+function Wi(n) {
   return n instanceof vt(n).Node;
 }
 function Kt(n) {
-  return $i(n) ? (n.nodeName || "").toLowerCase() : "";
+  return Wi(n) ? (n.nodeName || "").toLowerCase() : "";
 }
 let so;
-function Wi() {
+function $i() {
   if (so)
     return so;
   const n = navigator.userAgentData;
@@ -793,14 +793,14 @@ function Hs(n) {
   return ["table", "td", "th"].includes(Kt(n));
 }
 function Sn(n) {
-  const t = /firefox/i.test(Wi()), e = At(n), o = e.backdropFilter || e.WebkitBackdropFilter;
+  const t = /firefox/i.test($i()), e = At(n), o = e.backdropFilter || e.WebkitBackdropFilter;
   return e.transform !== "none" || e.perspective !== "none" || (o ? o !== "none" : !1) || t && e.willChange === "filter" || t && (e.filter ? e.filter !== "none" : !1) || ["transform", "perspective"].some((i) => e.willChange.includes(i)) || ["paint", "layout", "strict", "content"].some((i) => {
     const r = e.contain;
     return r != null ? r.includes(i) : !1;
   });
 }
 function Cn() {
-  return /^((?!chrome|android).)*safari/i.test(Wi());
+  return /^((?!chrome|android).)*safari/i.test($i());
 }
 function Tn(n) {
   return ["html", "body", "#document"].includes(Kt(n));
@@ -862,7 +862,7 @@ function le(n, t, e, o) {
   });
 }
 function Zt(n) {
-  return (($i(n) ? n.ownerDocument : n.document) || window.document).documentElement;
+  return ((Wi(n) ? n.ownerDocument : n.document) || window.document).documentElement;
 }
 function Lo(n) {
   return Tt(n) ? {
@@ -999,7 +999,7 @@ function Vs(n, t) {
   }
   return t.set(n, o), o;
 }
-function $s(n) {
+function Ws(n) {
   let {
     element: t,
     boundary: e,
@@ -1017,7 +1017,7 @@ function $s(n) {
     y: l.top
   };
 }
-function Ws(n) {
+function $s(n) {
   return Xi(n);
 }
 function Qn(n, t) {
@@ -1065,10 +1065,10 @@ function Ks(n, t, e) {
   };
 }
 const Gs = {
-  getClippingRect: $s,
+  getClippingRect: Ws,
   convertOffsetParentRelativeRectToViewportRelativeRect: js,
   isElement: Tt,
-  getDimensions: Ws,
+  getDimensions: $s,
   getOffsetParent: ti,
   getDocumentElement: Zt,
   getScale: xe,
@@ -2405,7 +2405,7 @@ function Va(n, t, e) {
     16 && (e(5, u = h.options && h.options.cancelIcon && h.options.cancelIcon.enabled), e(6, f = h.options && h.options.title));
   }, [i, d, r, l, h, u, f, E, s, a, c, o, b, v];
 }
-class $a extends zt {
+class Wa extends zt {
   constructor(t) {
     super(), Ut(this, t, Va, Ha, jt, {
       classPrefix: 11,
@@ -2612,7 +2612,7 @@ class nn extends yn {
    */
   _createTooltipContent() {
     const t = `${this.id}-description`, e = `${this.id}-label`;
-    return this.shepherdElementComponent = new $a({
+    return this.shepherdElementComponent = new Wa({
       target: this.tour.options.stepsContainer || document.body,
       props: {
         classPrefix: this.classPrefix,
@@ -2705,7 +2705,7 @@ class nn extends yn {
     this.options.highlightClass && t.classList.remove(this.options.highlightClass), t.classList.remove("shepherd-target-click-disabled", `${this.classPrefix}shepherd-enabled`, `${this.classPrefix}shepherd-target`);
   }
 }
-function Wa(n) {
+function $a(n) {
   if (n) {
     const {
       steps: t
@@ -3072,7 +3072,7 @@ class Ja extends yn {
    */
   _done(t) {
     const e = this.steps.indexOf(this.currentStep);
-    if (Array.isArray(this.steps) && this.steps.forEach((o) => o.destroy()), Wa(this), this.trigger(t, {
+    if (Array.isArray(this.steps) && this.steps.forEach((o) => o.destroy()), $a(this), this.trigger(t, {
       index: e
     }), Dt.activeTour = null, this.trigger("inactive", {
       tour: this
@@ -3224,7 +3224,7 @@ var ir = function(n) {
     });
   } };
 }, ol = ir;
-const nl = /* @__PURE__ */ nr(ol), F = Qr({
+const nl = /* @__PURE__ */ nr(ol), R = Qr({
   hovered: null,
   selected: null,
   editMode: !1,
@@ -3253,8 +3253,8 @@ const nl = /* @__PURE__ */ nr(ol), F = Qr({
     var o;
     const t = this.newStep.activeElement;
     if (n) {
-      F.newStep.activeEditor.readOnly = !0;
-      const i = await F.newStep.activeEditor.save(), s = nl().parse(i);
+      R.newStep.activeEditor.readOnly = !0;
+      const i = await R.newStep.activeEditor.save(), s = nl().parse(i);
       this.newStep.content = s.join("");
     }
     const e = {
@@ -3367,10 +3367,10 @@ var Yt = Pt(/(?:Trident.*rv[ :]?11\.|msie|iemobile|Windows Phone)/i), to = Pt(/E
   capture: !1,
   passive: !1
 };
-function W(n, t, e) {
+function $(n, t, e) {
   n.addEventListener(t, e, !Yt && ar);
 }
-function $(n, t, e) {
+function W(n, t, e) {
   n.removeEventListener(t, e, !Yt && ar);
 }
 function So(n, t) {
@@ -3414,7 +3414,7 @@ function gt(n, t, e) {
       n.className = (o + (e ? " " + t : "")).replace(vi, " ");
     }
 }
-function R(n, t, e) {
+function P(n, t, e) {
   var o = n && n.style;
   if (o) {
     if (e === void 0)
@@ -3428,7 +3428,7 @@ function Se(n, t) {
     e = n;
   else
     do {
-      var o = R(n, "transform");
+      var o = P(n, "transform");
       o && o !== "none" && (e = o + " " + e);
     } while (!t && (n = n.parentNode));
   var i = window.DOMMatrix || window.WebKitCSSMatrix || window.CSSMatrix || window.MSCSSMatrix;
@@ -3453,9 +3453,9 @@ function nt(n, t, e, o, i) {
     var r, s, a, l, c, h, d;
     if (n !== window && n.parentNode && n !== Ot() ? (r = n.getBoundingClientRect(), s = r.top, a = r.left, l = r.bottom, c = r.right, h = r.height, d = r.width) : (s = 0, a = 0, l = window.innerHeight, c = window.innerWidth, h = window.innerHeight, d = window.innerWidth), (t || e) && n !== window && (i = i || n.parentNode, !Yt))
       do
-        if (i && i.getBoundingClientRect && (R(i, "transform") !== "none" || e && R(i, "position") !== "static")) {
+        if (i && i.getBoundingClientRect && (P(i, "transform") !== "none" || e && P(i, "position") !== "static")) {
           var u = i.getBoundingClientRect();
-          s -= u.top + parseInt(R(i, "border-top-width")), a -= u.left + parseInt(R(i, "border-left-width")), l = s + r.height, c = a + r.width;
+          s -= u.top + parseInt(P(i, "border-top-width")), a -= u.left + parseInt(P(i, "border-left-width")), l = s + r.height, c = a + r.width;
           break;
         }
       while (i = i.parentNode);
@@ -3486,7 +3486,7 @@ function wi(n, t, e) {
 }
 function _e(n, t, e, o) {
   for (var i = 0, r = 0, s = n.children; r < s.length; ) {
-    if (s[r].style.display !== "none" && s[r] !== P.ghost && (o || s[r] !== P.dragged) && Mt(s[r], e.draggable, n, !1)) {
+    if (s[r].style.display !== "none" && s[r] !== F.ghost && (o || s[r] !== F.dragged) && Mt(s[r], e.draggable, n, !1)) {
       if (i === t)
         return s[r];
       i++;
@@ -3496,7 +3496,7 @@ function _e(n, t, e, o) {
   return null;
 }
 function In(n, t) {
-  for (var e = n.lastElementChild; e && (e === P.ghost || R(e, "display") === "none" || t && !So(e, t)); )
+  for (var e = n.lastElementChild; e && (e === F.ghost || P(e, "display") === "none" || t && !So(e, t)); )
     e = e.previousElementSibling;
   return e || null;
 }
@@ -3505,7 +3505,7 @@ function yt(n, t) {
   if (!n || !n.parentNode)
     return -1;
   for (; n = n.previousElementSibling; )
-    n.nodeName.toUpperCase() !== "TEMPLATE" && n !== P.clone && (!t || So(n, t)) && e++;
+    n.nodeName.toUpperCase() !== "TEMPLATE" && n !== F.clone && (!t || So(n, t)) && e++;
   return e;
 }
 function ki(n) {
@@ -3532,7 +3532,7 @@ function Xt(n, t) {
   var e = n, o = !1;
   do
     if (e.clientWidth < e.scrollWidth || e.clientHeight < e.scrollHeight) {
-      var i = R(e);
+      var i = P(e);
       if (e.clientWidth < e.scrollWidth && (i.overflowX == "auto" || i.overflowX == "scroll") || e.clientHeight < e.scrollHeight && (i.overflowY == "auto" || i.overflowY == "scroll")) {
         if (!e.getBoundingClientRect || e === document.body)
           return Ot();
@@ -3582,7 +3582,7 @@ function ul() {
       if (n = [], !!this.options.animation) {
         var o = [].slice.call(this.el.children);
         o.forEach(function(i) {
-          if (!(R(i, "display") === "none" || i === P.ghost)) {
+          if (!(P(i, "display") === "none" || i === F.ghost)) {
             n.push({
               target: i,
               rect: nt(i)
@@ -3624,10 +3624,10 @@ function ul() {
     },
     animate: function(o, i, r, s) {
       if (s) {
-        R(o, "transition", ""), R(o, "transform", "");
+        P(o, "transition", ""), P(o, "transform", "");
         var a = Se(this.el), l = a && a.a, c = a && a.d, h = (i.left - r.left) / (l || 1), d = (i.top - r.top) / (c || 1);
-        o.animatingX = !!h, o.animatingY = !!d, R(o, "transform", "translate3d(" + h + "px," + d + "px,0)"), this.forRepaintDummy = pl(o), R(o, "transition", "transform " + s + "ms" + (this.options.easing ? " " + this.options.easing : "")), R(o, "transform", "translate3d(0,0,0)"), typeof o.animated == "number" && clearTimeout(o.animated), o.animated = setTimeout(function() {
-          R(o, "transition", ""), R(o, "transform", ""), o.animated = !1, o.animatingX = !1, o.animatingY = !1;
+        o.animatingX = !!h, o.animatingY = !!d, P(o, "transform", "translate3d(" + h + "px," + d + "px,0)"), this.forRepaintDummy = pl(o), P(o, "transition", "transform " + s + "ms" + (this.options.easing ? " " + this.options.easing : "")), P(o, "transform", "translate3d(0,0,0)"), typeof o.animated == "number" && clearTimeout(o.animated), o.animated = setTimeout(function() {
+          P(o, "transition", ""), P(o, "transform", ""), o.animated = !1, o.animatingX = !1, o.animatingY = !1;
         }, s);
       }
     }
@@ -3707,7 +3707,7 @@ function gl(n) {
 }
 var ml = ["evt"], ut = function(t, e) {
   var o = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {}, i = o.evt, r = sl(o, ml);
-  eo.pluginEvent.bind(P)(t, e, Nt({
+  eo.pluginEvent.bind(F)(t, e, Nt({
     dragEl: C,
     parentEl: J,
     ghostEl: j,
@@ -3715,10 +3715,10 @@ var ml = ["evt"], ut = function(t, e) {
     nextEl: ee,
     lastDownEl: fo,
     cloneEl: q,
-    cloneHidden: $t,
+    cloneHidden: Wt,
     dragStarted: Oe,
     putSortable: rt,
-    activeSortable: P.active,
+    activeSortable: F.active,
     originalEvent: i,
     oldIndex: ye,
     oldDraggableIndex: Ue,
@@ -3727,10 +3727,10 @@ var ml = ["evt"], ut = function(t, e) {
     hideGhostForTarget: gr,
     unhideGhostForTarget: mr,
     cloneNowHidden: function() {
-      $t = !0;
+      Wt = !0;
     },
     cloneNowShown: function() {
-      $t = !1;
+      Wt = !1;
     },
     dispatchSortableEvent: function(a) {
       dt({
@@ -3753,7 +3753,7 @@ function dt(n) {
     newDraggableIndex: Vt
   }, n));
 }
-var C, J, j, Z, ee, fo, q, $t, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = [], Qt, Et, Vo, $o, yi, xi, Oe, ge, ze, Ye = !1, lo = !1, go, at, Wo = [], rn = !1, Bo = [], Do = typeof document < "u", co = rr, Ei = to || Yt ? "cssFloat" : "float", bl = Do && !sr && !rr && "draggable" in document.createElement("div"), ur = function() {
+var C, J, j, Z, ee, fo, q, Wt, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = [], Qt, Et, Vo, Wo, yi, xi, Oe, ge, ze, Ye = !1, lo = !1, go, at, $o = [], rn = !1, Bo = [], Do = typeof document < "u", co = rr, Ei = to || Yt ? "cssFloat" : "float", bl = Do && !sr && !rr && "draggable" in document.createElement("div"), ur = function() {
   if (Do) {
     if (Yt)
       return !1;
@@ -3761,7 +3761,7 @@ var C, J, j, Z, ee, fo, q, $t, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = []
     return n.style.cssText = "pointer-events:auto", n.style.pointerEvents === "auto";
   }
 }(), pr = function(t, e) {
-  var o = R(t), i = parseInt(o.width) - parseInt(o.paddingLeft) - parseInt(o.paddingRight) - parseInt(o.borderLeftWidth) - parseInt(o.borderRightWidth), r = _e(t, 0, e), s = _e(t, 1, e), a = r && R(r), l = s && R(s), c = a && parseInt(a.marginLeft) + parseInt(a.marginRight) + nt(r).width, h = l && parseInt(l.marginLeft) + parseInt(l.marginRight) + nt(s).width;
+  var o = P(t), i = parseInt(o.width) - parseInt(o.paddingLeft) - parseInt(o.paddingRight) - parseInt(o.borderLeftWidth) - parseInt(o.borderRightWidth), r = _e(t, 0, e), s = _e(t, 1, e), a = r && P(r), l = s && P(s), c = a && parseInt(a.marginLeft) + parseInt(a.marginRight) + nt(r).width, h = l && parseInt(l.marginLeft) + parseInt(l.marginRight) + nt(s).width;
   if (o.display === "flex")
     return o.flexDirection === "column" || o.flexDirection === "column-reverse" ? "vertical" : "horizontal";
   if (o.display === "grid")
@@ -3805,9 +3805,9 @@ var C, J, j, Z, ee, fo, q, $t, ye, mt, Ue, Vt, ao, rt, be = !1, Co = !1, To = []
     name: i
   }), o.name = i.name, o.checkPull = e(i.pull, !0), o.checkPut = e(i.put), o.revertClone = i.revertClone, t.group = o;
 }, gr = function() {
-  !ur && j && R(j, "display", "none");
+  !ur && j && P(j, "display", "none");
 }, mr = function() {
-  !ur && j && R(j, "display", "");
+  !ur && j && P(j, "display", "");
 };
 Do && !sr && document.addEventListener("click", function(n) {
   if (Co)
@@ -3827,7 +3827,7 @@ var te = function(t) {
 }, kl = function(t) {
   C && C.parentNode[bt]._isOutsideThisEl(t.target);
 };
-function P(n, t) {
+function F(n, t) {
   if (!(n && n.nodeType && n.nodeType === 1))
     throw "Sortable: `el` must be an HTMLElement, not ".concat({}.toString.call(n));
   this.el = n, this.options = t = Ft({}, t), n[bt] = this;
@@ -3873,7 +3873,7 @@ function P(n, t) {
       x: 0,
       y: 0
     },
-    supportPointer: P.supportPointer !== !1 && "PointerEvent" in window && !He,
+    supportPointer: F.supportPointer !== !1 && "PointerEvent" in window && !He,
     emptyInsertThreshold: 5
   };
   eo.initializePlugins(this, n, e);
@@ -3882,11 +3882,11 @@ function P(n, t) {
   fr(t);
   for (var i in this)
     i.charAt(0) === "_" && typeof this[i] == "function" && (this[i] = this[i].bind(this));
-  this.nativeDraggable = t.forceFallback ? !1 : bl, this.nativeDraggable && (this.options.touchStartThreshold = 1), t.supportPointer ? W(n, "pointerdown", this._onTapStart) : (W(n, "mousedown", this._onTapStart), W(n, "touchstart", this._onTapStart)), this.nativeDraggable && (W(n, "dragover", this), W(n, "dragenter", this)), To.push(this.el), t.store && t.store.get && this.sort(t.store.get(this) || []), Ft(this, ul());
+  this.nativeDraggable = t.forceFallback ? !1 : bl, this.nativeDraggable && (this.options.touchStartThreshold = 1), t.supportPointer ? $(n, "pointerdown", this._onTapStart) : ($(n, "mousedown", this._onTapStart), $(n, "touchstart", this._onTapStart)), this.nativeDraggable && ($(n, "dragover", this), $(n, "dragenter", this)), To.push(this.el), t.store && t.store.get && this.sort(t.store.get(this) || []), Ft(this, ul());
 }
-P.prototype = /** @lends Sortable.prototype */
+F.prototype = /** @lends Sortable.prototype */
 {
-  constructor: P,
+  constructor: F,
   _isOutsideThisEl: function(t) {
     !this.el.contains(t) && t !== this.el && (ge = null);
   },
@@ -3935,14 +3935,14 @@ P.prototype = /** @lends Sortable.prototype */
     var i = this, r = i.el, s = i.options, a = r.ownerDocument, l;
     if (o && !C && o.parentNode === r) {
       var c = nt(o);
-      if (Z = r, C = o, J = C.parentNode, ee = C.nextSibling, fo = o, ao = s.group, P.dragged = C, Qt = {
+      if (Z = r, C = o, J = C.parentNode, ee = C.nextSibling, fo = o, ao = s.group, F.dragged = C, Qt = {
         target: C,
         clientX: (e || t).clientX,
         clientY: (e || t).clientY
       }, yi = Qt.clientX - c.left, xi = Qt.clientY - c.top, this._lastX = (e || t).clientX, this._lastY = (e || t).clientY, C.style["will-change"] = "all", l = function() {
         if (ut("delayEnded", i, {
           evt: t
-        }), P.eventCanceled) {
+        }), F.eventCanceled) {
           i._onDrop();
           return;
         }
@@ -3953,14 +3953,14 @@ P.prototype = /** @lends Sortable.prototype */
         }), gt(C, s.chosenClass, !0);
       }, s.ignore.split(",").forEach(function(h) {
         lr(C, h.trim(), Xo);
-      }), W(a, "dragover", te), W(a, "mousemove", te), W(a, "touchmove", te), W(a, "mouseup", i._onDrop), W(a, "touchend", i._onDrop), W(a, "touchcancel", i._onDrop), bi && this.nativeDraggable && (this.options.touchStartThreshold = 4, C.draggable = !0), ut("delayStart", this, {
+      }), $(a, "dragover", te), $(a, "mousemove", te), $(a, "touchmove", te), $(a, "mouseup", i._onDrop), $(a, "touchend", i._onDrop), $(a, "touchcancel", i._onDrop), bi && this.nativeDraggable && (this.options.touchStartThreshold = 4, C.draggable = !0), ut("delayStart", this, {
         evt: t
       }), s.delay && (!s.delayOnTouchOnly || e) && (!this.nativeDraggable || !(to || Yt))) {
-        if (P.eventCanceled) {
+        if (F.eventCanceled) {
           this._onDrop();
           return;
         }
-        W(a, "mouseup", i._disableDelayedDrag), W(a, "touchend", i._disableDelayedDrag), W(a, "touchcancel", i._disableDelayedDrag), W(a, "mousemove", i._delayedDragTouchMoveHandler), W(a, "touchmove", i._delayedDragTouchMoveHandler), s.supportPointer && W(a, "pointermove", i._delayedDragTouchMoveHandler), i._dragStartTimer = setTimeout(l, s.delay);
+        $(a, "mouseup", i._disableDelayedDrag), $(a, "touchend", i._disableDelayedDrag), $(a, "touchcancel", i._disableDelayedDrag), $(a, "mousemove", i._delayedDragTouchMoveHandler), $(a, "touchmove", i._delayedDragTouchMoveHandler), s.supportPointer && $(a, "pointermove", i._delayedDragTouchMoveHandler), i._dragStartTimer = setTimeout(l, s.delay);
       } else
         l();
     }
@@ -3974,10 +3974,10 @@ P.prototype = /** @lends Sortable.prototype */
   },
   _disableDelayedDragEvents: function() {
     var t = this.el.ownerDocument;
-    $(t, "mouseup", this._disableDelayedDrag), $(t, "touchend", this._disableDelayedDrag), $(t, "touchcancel", this._disableDelayedDrag), $(t, "mousemove", this._delayedDragTouchMoveHandler), $(t, "touchmove", this._delayedDragTouchMoveHandler), $(t, "pointermove", this._delayedDragTouchMoveHandler);
+    W(t, "mouseup", this._disableDelayedDrag), W(t, "touchend", this._disableDelayedDrag), W(t, "touchcancel", this._disableDelayedDrag), W(t, "mousemove", this._delayedDragTouchMoveHandler), W(t, "touchmove", this._delayedDragTouchMoveHandler), W(t, "pointermove", this._delayedDragTouchMoveHandler);
   },
   _triggerDragStart: function(t, e) {
-    e = e || t.pointerType == "touch" && t, !this.nativeDraggable || e ? this.options.supportPointer ? W(document, "pointermove", this._onTouchMove) : e ? W(document, "touchmove", this._onTouchMove) : W(document, "mousemove", this._onTouchMove) : (W(C, "dragend", this), W(Z, "dragstart", this._onDragStart));
+    e = e || t.pointerType == "touch" && t, !this.nativeDraggable || e ? this.options.supportPointer ? $(document, "pointermove", this._onTouchMove) : e ? $(document, "touchmove", this._onTouchMove) : $(document, "mousemove", this._onTouchMove) : ($(C, "dragend", this), $(Z, "dragstart", this._onDragStart));
     try {
       document.selection ? mo(function() {
         document.selection.empty();
@@ -3989,9 +3989,9 @@ P.prototype = /** @lends Sortable.prototype */
     if (be = !1, Z && C) {
       ut("dragStarted", this, {
         evt: e
-      }), this.nativeDraggable && W(document, "dragover", kl);
+      }), this.nativeDraggable && $(document, "dragover", kl);
       var o = this.options;
-      !t && gt(C, o.dragClass, !1), gt(C, o.ghostClass, !0), P.active = this, t && this._appendGhost(), dt({
+      !t && gt(C, o.dragClass, !1), gt(C, o.ghostClass, !0), F.active = this, t && this._appendGhost(), dt({
         sortable: this,
         name: "start",
         originalEvent: e
@@ -4023,14 +4023,14 @@ P.prototype = /** @lends Sortable.prototype */
   },
   _onTouchMove: function(t) {
     if (Qt) {
-      var e = this.options, o = e.fallbackTolerance, i = e.fallbackOffset, r = t.touches ? t.touches[0] : t, s = j && Se(j, !0), a = j && s && s.a, l = j && s && s.d, c = co && at && ki(at), h = (r.clientX - Qt.clientX + i.x) / (a || 1) + (c ? c[0] - Wo[0] : 0) / (a || 1), d = (r.clientY - Qt.clientY + i.y) / (l || 1) + (c ? c[1] - Wo[1] : 0) / (l || 1);
-      if (!P.active && !be) {
+      var e = this.options, o = e.fallbackTolerance, i = e.fallbackOffset, r = t.touches ? t.touches[0] : t, s = j && Se(j, !0), a = j && s && s.a, l = j && s && s.d, c = co && at && ki(at), h = (r.clientX - Qt.clientX + i.x) / (a || 1) + (c ? c[0] - $o[0] : 0) / (a || 1), d = (r.clientY - Qt.clientY + i.y) / (l || 1) + (c ? c[1] - $o[1] : 0) / (l || 1);
+      if (!F.active && !be) {
         if (o && Math.max(Math.abs(r.clientX - this._lastX), Math.abs(r.clientY - this._lastY)) < o)
           return;
         this._onDragStart(t, !0);
       }
       if (j) {
-        s ? (s.e += h - (Vo || 0), s.f += d - ($o || 0)) : s = {
+        s ? (s.e += h - (Vo || 0), s.f += d - (Wo || 0)) : s = {
           a: 1,
           b: 0,
           c: 0,
@@ -4039,7 +4039,7 @@ P.prototype = /** @lends Sortable.prototype */
           f: d
         };
         var u = "matrix(".concat(s.a, ",").concat(s.b, ",").concat(s.c, ",").concat(s.d, ",").concat(s.e, ",").concat(s.f, ")");
-        R(j, "webkitTransform", u), R(j, "mozTransform", u), R(j, "msTransform", u), R(j, "transform", u), Vo = h, $o = d, Et = r;
+        P(j, "webkitTransform", u), P(j, "mozTransform", u), P(j, "msTransform", u), P(j, "transform", u), Vo = h, Wo = d, Et = r;
       }
       t.cancelable && t.preventDefault();
     }
@@ -4048,31 +4048,31 @@ P.prototype = /** @lends Sortable.prototype */
     if (!j) {
       var t = this.options.fallbackOnBody ? document.body : Z, e = nt(C, !0, co, !0, t), o = this.options;
       if (co) {
-        for (at = t; R(at, "position") === "static" && R(at, "transform") === "none" && at !== document; )
+        for (at = t; P(at, "position") === "static" && P(at, "transform") === "none" && at !== document; )
           at = at.parentNode;
-        at !== document.body && at !== document.documentElement ? (at === document && (at = Ot()), e.top += at.scrollTop, e.left += at.scrollLeft) : at = Ot(), Wo = ki(at);
+        at !== document.body && at !== document.documentElement ? (at === document && (at = Ot()), e.top += at.scrollTop, e.left += at.scrollLeft) : at = Ot(), $o = ki(at);
       }
-      j = C.cloneNode(!0), gt(j, o.ghostClass, !1), gt(j, o.fallbackClass, !0), gt(j, o.dragClass, !0), R(j, "transition", ""), R(j, "transform", ""), R(j, "box-sizing", "border-box"), R(j, "margin", 0), R(j, "top", e.top), R(j, "left", e.left), R(j, "width", e.width), R(j, "height", e.height), R(j, "opacity", "0.8"), R(j, "position", co ? "absolute" : "fixed"), R(j, "zIndex", "100000"), R(j, "pointerEvents", "none"), P.ghost = j, t.appendChild(j), R(j, "transform-origin", yi / parseInt(j.style.width) * 100 + "% " + xi / parseInt(j.style.height) * 100 + "%");
+      j = C.cloneNode(!0), gt(j, o.ghostClass, !1), gt(j, o.fallbackClass, !0), gt(j, o.dragClass, !0), P(j, "transition", ""), P(j, "transform", ""), P(j, "box-sizing", "border-box"), P(j, "margin", 0), P(j, "top", e.top), P(j, "left", e.left), P(j, "width", e.width), P(j, "height", e.height), P(j, "opacity", "0.8"), P(j, "position", co ? "absolute" : "fixed"), P(j, "zIndex", "100000"), P(j, "pointerEvents", "none"), F.ghost = j, t.appendChild(j), P(j, "transform-origin", yi / parseInt(j.style.width) * 100 + "% " + xi / parseInt(j.style.height) * 100 + "%");
     }
   },
   _onDragStart: function(t, e) {
     var o = this, i = t.dataTransfer, r = o.options;
     if (ut("dragStart", this, {
       evt: t
-    }), P.eventCanceled) {
+    }), F.eventCanceled) {
       this._onDrop();
       return;
     }
-    ut("setupClone", this), P.eventCanceled || (q = hr(C), q.removeAttribute("id"), q.draggable = !1, q.style["will-change"] = "", this._hideClone(), gt(q, this.options.chosenClass, !1), P.clone = q), o.cloneId = mo(function() {
-      ut("clone", o), !P.eventCanceled && (o.options.removeCloneOnHide || Z.insertBefore(q, C), o._hideClone(), dt({
+    ut("setupClone", this), F.eventCanceled || (q = hr(C), q.removeAttribute("id"), q.draggable = !1, q.style["will-change"] = "", this._hideClone(), gt(q, this.options.chosenClass, !1), F.clone = q), o.cloneId = mo(function() {
+      ut("clone", o), !F.eventCanceled && (o.options.removeCloneOnHide || Z.insertBefore(q, C), o._hideClone(), dt({
         sortable: o,
         name: "clone"
       }));
-    }), !e && gt(C, r.dragClass, !0), e ? (Co = !0, o._loopId = setInterval(o._emulateDragOver, 50)) : ($(document, "mouseup", o._onDrop), $(document, "touchend", o._onDrop), $(document, "touchcancel", o._onDrop), i && (i.effectAllowed = "move", r.setData && r.setData.call(o, i, C)), W(document, "drop", o), R(C, "transform", "translateZ(0)")), be = !0, o._dragStartId = mo(o._dragStarted.bind(o, e, t)), W(document, "selectstart", o), Oe = !0, He && R(document.body, "user-select", "none");
+    }), !e && gt(C, r.dragClass, !0), e ? (Co = !0, o._loopId = setInterval(o._emulateDragOver, 50)) : (W(document, "mouseup", o._onDrop), W(document, "touchend", o._onDrop), W(document, "touchcancel", o._onDrop), i && (i.effectAllowed = "move", r.setData && r.setData.call(o, i, C)), $(document, "drop", o), P(C, "transform", "translateZ(0)")), be = !0, o._dragStartId = mo(o._dragStarted.bind(o, e, t)), $(document, "selectstart", o), Oe = !0, He && P(document.body, "user-select", "none");
   },
   // Returns true - if no further action is needed (either inserted or another condition)
   _onDragOver: function(t) {
-    var e = this.el, o = t.target, i, r, s, a = this.options, l = a.group, c = P.active, h = ao === l, d = a.sort, u = rt || c, f, p = this, b = !1;
+    var e = this.el, o = t.target, i, r, s, a = this.options, l = a.group, c = F.active, h = ao === l, d = a.sort, u = rt || c, f, p = this, b = !1;
     if (rn)
       return;
     function O(U, ft) {
@@ -4099,7 +4099,7 @@ P.prototype = /** @lends Sortable.prototype */
     function _(U) {
       return O("dragOverCompleted", {
         insertion: U
-      }), U && (h ? c._hideClone() : c._showClone(p), p !== u && (gt(C, rt ? rt.options.ghostClass : c.options.ghostClass, !1), gt(C, a.ghostClass, !0)), rt !== p && p !== P.active ? rt = p : p === P.active && rt && (rt = null), u === p && (p._ignoreWhileAnimating = o), p.animateAll(function() {
+      }), U && (h ? c._hideClone() : c._showClone(p), p !== u && (gt(C, rt ? rt.options.ghostClass : c.options.ghostClass, !1), gt(C, a.ghostClass, !0)), rt !== p && p !== F.active ? rt = p : p === F.active && rt && (rt = null), u === p && (p._ignoreWhileAnimating = o), p.animateAll(function() {
         O("dragOverAnimationComplete"), p._ignoreWhileAnimating = null;
       }), p !== u && (u.animateAll(), u._ignoreWhileAnimating = null)), (o === C && !C.animated || o === e && !o.animated) && (ge = null), !a.dragoverBubble && !t.rootEl && o !== document && (C.parentNode[bt]._isOutsideThisEl(t.target), !U && te(t)), !a.dragoverBubble && t.stopPropagation && t.stopPropagation(), b = !0;
     }
@@ -4113,15 +4113,15 @@ P.prototype = /** @lends Sortable.prototype */
         originalEvent: t
       });
     }
-    if (t.preventDefault !== void 0 && t.cancelable && t.preventDefault(), o = Mt(o, a.draggable, e, !0), O("dragOver"), P.eventCanceled)
+    if (t.preventDefault !== void 0 && t.cancelable && t.preventDefault(), o = Mt(o, a.draggable, e, !0), O("dragOver"), F.eventCanceled)
       return b;
     if (C.contains(t.target) || o.animated && o.animatingX && o.animatingY || p._ignoreWhileAnimating === o)
       return _(!1);
     if (Co = !1, c && !a.disabled && (h ? d || (s = J !== Z) : rt === this || (this.lastPutMode = ao.checkPull(this, c, C, t)) && l.checkPut(this, c, C, t))) {
-      if (f = this._getDirection(t, o) === "vertical", i = nt(C), O("dragOverValid"), P.eventCanceled)
+      if (f = this._getDirection(t, o) === "vertical", i = nt(C), O("dragOverValid"), F.eventCanceled)
         return b;
       if (s)
-        return J = Z, B(), this._hideClone(), O("revert"), P.eventCanceled || (ee ? Z.insertBefore(C, ee) : Z.appendChild(C)), _(!0);
+        return J = Z, B(), this._hideClone(), O("revert"), F.eventCanceled || (ee ? Z.insertBefore(C, ee) : Z.appendChild(C)), _(!0);
       var v = In(e, a.draggable);
       if (!v || Sl(t, f, this) && !v.animated) {
         if (v === C)
@@ -4143,7 +4143,7 @@ P.prototype = /** @lends Sortable.prototype */
           var M = yt(C);
           do
             M -= T, x = J.children[M];
-          while (x && (R(x, "display") === "none" || x === j));
+          while (x && (P(x, "display") === "none" || x === j));
         }
         if (T === 0 || x === o)
           return _(!1);
@@ -4161,21 +4161,21 @@ P.prototype = /** @lends Sortable.prototype */
   },
   _ignoreWhileAnimating: null,
   _offMoveEvents: function() {
-    $(document, "mousemove", this._onTouchMove), $(document, "touchmove", this._onTouchMove), $(document, "pointermove", this._onTouchMove), $(document, "dragover", te), $(document, "mousemove", te), $(document, "touchmove", te);
+    W(document, "mousemove", this._onTouchMove), W(document, "touchmove", this._onTouchMove), W(document, "pointermove", this._onTouchMove), W(document, "dragover", te), W(document, "mousemove", te), W(document, "touchmove", te);
   },
   _offUpEvents: function() {
     var t = this.el.ownerDocument;
-    $(t, "mouseup", this._onDrop), $(t, "touchend", this._onDrop), $(t, "pointerup", this._onDrop), $(t, "touchcancel", this._onDrop), $(document, "selectstart", this);
+    W(t, "mouseup", this._onDrop), W(t, "touchend", this._onDrop), W(t, "pointerup", this._onDrop), W(t, "touchcancel", this._onDrop), W(document, "selectstart", this);
   },
   _onDrop: function(t) {
     var e = this.el, o = this.options;
     if (mt = yt(C), Vt = yt(C, o.draggable), ut("drop", this, {
       evt: t
-    }), J = C && C.parentNode, mt = yt(C), Vt = yt(C, o.draggable), P.eventCanceled) {
+    }), J = C && C.parentNode, mt = yt(C), Vt = yt(C, o.draggable), F.eventCanceled) {
       this._nulling();
       return;
     }
-    be = !1, lo = !1, Ye = !1, clearInterval(this._loopId), clearTimeout(this._dragStartTimer), sn(this.cloneId), sn(this._dragStartId), this.nativeDraggable && ($(document, "drop", this), $(e, "dragstart", this._onDragStart)), this._offMoveEvents(), this._offUpEvents(), He && R(document.body, "user-select", ""), R(C, "transform", ""), t && (Oe && (t.cancelable && t.preventDefault(), !o.dropBubble && t.stopPropagation()), j && j.parentNode && j.parentNode.removeChild(j), (Z === J || rt && rt.lastPutMode !== "clone") && q && q.parentNode && q.parentNode.removeChild(q), C && (this.nativeDraggable && $(C, "dragend", this), Xo(C), C.style["will-change"] = "", Oe && !be && gt(C, rt ? rt.options.ghostClass : this.options.ghostClass, !1), gt(C, this.options.chosenClass, !1), dt({
+    be = !1, lo = !1, Ye = !1, clearInterval(this._loopId), clearTimeout(this._dragStartTimer), sn(this.cloneId), sn(this._dragStartId), this.nativeDraggable && (W(document, "drop", this), W(e, "dragstart", this._onDragStart)), this._offMoveEvents(), this._offUpEvents(), He && P(document.body, "user-select", ""), P(C, "transform", ""), t && (Oe && (t.cancelable && t.preventDefault(), !o.dropBubble && t.stopPropagation()), j && j.parentNode && j.parentNode.removeChild(j), (Z === J || rt && rt.lastPutMode !== "clone") && q && q.parentNode && q.parentNode.removeChild(q), C && (this.nativeDraggable && W(C, "dragend", this), Xo(C), C.style["will-change"] = "", Oe && !be && gt(C, rt ? rt.options.ghostClass : this.options.ghostClass, !1), gt(C, this.options.chosenClass, !1), dt({
       sortable: this,
       name: "unchoose",
       toEl: J,
@@ -4214,7 +4214,7 @@ P.prototype = /** @lends Sortable.prototype */
       name: "sort",
       toEl: J,
       originalEvent: t
-    })), P.active && ((mt == null || mt === -1) && (mt = ye, Vt = Ue), dt({
+    })), F.active && ((mt == null || mt === -1) && (mt = ye, Vt = Ue), dt({
       sortable: this,
       name: "end",
       toEl: J,
@@ -4222,9 +4222,9 @@ P.prototype = /** @lends Sortable.prototype */
     }), this.save()))), this._nulling();
   },
   _nulling: function() {
-    ut("nulling", this), Z = C = J = j = ee = q = fo = $t = Qt = Et = Oe = mt = Vt = ye = Ue = ge = ze = rt = ao = P.dragged = P.ghost = P.clone = P.active = null, Bo.forEach(function(t) {
+    ut("nulling", this), Z = C = J = j = ee = q = fo = Wt = Qt = Et = Oe = mt = Vt = ye = Ue = ge = ze = rt = ao = F.dragged = F.ghost = F.clone = F.active = null, Bo.forEach(function(t) {
       t.checked = !0;
-    }), Bo.length = Vo = $o = 0;
+    }), Bo.length = Vo = Wo = 0;
   },
   handleEvent: function(t) {
     switch (t.type) {
@@ -4298,15 +4298,15 @@ P.prototype = /** @lends Sortable.prototype */
   destroy: function() {
     ut("destroy", this);
     var t = this.el;
-    t[bt] = null, $(t, "mousedown", this._onTapStart), $(t, "touchstart", this._onTapStart), $(t, "pointerdown", this._onTapStart), this.nativeDraggable && ($(t, "dragover", this), $(t, "dragenter", this)), Array.prototype.forEach.call(t.querySelectorAll("[draggable]"), function(e) {
+    t[bt] = null, W(t, "mousedown", this._onTapStart), W(t, "touchstart", this._onTapStart), W(t, "pointerdown", this._onTapStart), this.nativeDraggable && (W(t, "dragover", this), W(t, "dragenter", this)), Array.prototype.forEach.call(t.querySelectorAll("[draggable]"), function(e) {
       e.removeAttribute("draggable");
     }), this._onDrop(), this._disableDelayedDragEvents(), To.splice(To.indexOf(this.el), 1), this.el = t = null;
   },
   _hideClone: function() {
-    if (!$t) {
-      if (ut("hideClone", this), P.eventCanceled)
+    if (!Wt) {
+      if (ut("hideClone", this), F.eventCanceled)
         return;
-      R(q, "display", "none"), this.options.removeCloneOnHide && q.parentNode && q.parentNode.removeChild(q), $t = !0;
+      P(q, "display", "none"), this.options.removeCloneOnHide && q.parentNode && q.parentNode.removeChild(q), Wt = !0;
     }
   },
   _showClone: function(t) {
@@ -4314,10 +4314,10 @@ P.prototype = /** @lends Sortable.prototype */
       this._hideClone();
       return;
     }
-    if ($t) {
-      if (ut("showClone", this), P.eventCanceled)
+    if (Wt) {
+      if (ut("showClone", this), F.eventCanceled)
         return;
-      C.parentNode == Z && !this.options.group.revertClone ? Z.insertBefore(q, C) : ee ? Z.insertBefore(q, ee) : Z.appendChild(q), this.options.group.revertClone && this.animate(C, q), R(q, "display", ""), $t = !1;
+      C.parentNode == Z && !this.options.group.revertClone ? Z.insertBefore(q, C) : ee ? Z.insertBefore(q, ee) : Z.appendChild(q), this.options.group.revertClone && this.animate(C, q), P(q, "display", ""), Wt = !1;
     }
   }
 };
@@ -4379,13 +4379,13 @@ function mo(n) {
 function sn(n) {
   return clearTimeout(n);
 }
-Do && W(document, "touchmove", function(n) {
-  (P.active || be) && n.cancelable && n.preventDefault();
+Do && $(document, "touchmove", function(n) {
+  (F.active || be) && n.cancelable && n.preventDefault();
 });
-P.utils = {
-  on: W,
-  off: $,
-  css: R,
+F.utils = {
+  on: $,
+  off: W,
+  css: P,
   find: lr,
   is: function(t, e) {
     return !!Mt(t, e, t, !1);
@@ -4401,22 +4401,22 @@ P.utils = {
   detectDirection: pr,
   getChild: _e
 };
-P.get = function(n) {
+F.get = function(n) {
   return n[bt];
 };
-P.mount = function() {
+F.mount = function() {
   for (var n = arguments.length, t = new Array(n), e = 0; e < n; e++)
     t[e] = arguments[e];
   t[0].constructor === Array && (t = t[0]), t.forEach(function(o) {
     if (!o.prototype || !o.prototype.constructor)
       throw "Sortable: Mounted plugin must be a constructor function, not ".concat({}.toString.call(o));
-    o.utils && (P.utils = Nt(Nt({}, P.utils), o.utils)), eo.mount(o);
+    o.utils && (F.utils = Nt(Nt({}, F.utils), o.utils)), eo.mount(o);
   });
 };
-P.create = function(n, t) {
-  return new P(n, t);
+F.create = function(n, t) {
+  return new F(n, t);
 };
-P.version = al;
+F.version = al;
 var et = [], Ae, an, ln = !1, Ko, Go, _o, Le;
 function Il() {
   function n() {
@@ -4433,14 +4433,14 @@ function Il() {
   return n.prototype = {
     dragStarted: function(e) {
       var o = e.originalEvent;
-      this.sortable.nativeDraggable ? W(document, "dragover", this._handleAutoScroll) : this.options.supportPointer ? W(document, "pointermove", this._handleFallbackAutoScroll) : o.touches ? W(document, "touchmove", this._handleFallbackAutoScroll) : W(document, "mousemove", this._handleFallbackAutoScroll);
+      this.sortable.nativeDraggable ? $(document, "dragover", this._handleAutoScroll) : this.options.supportPointer ? $(document, "pointermove", this._handleFallbackAutoScroll) : o.touches ? $(document, "touchmove", this._handleFallbackAutoScroll) : $(document, "mousemove", this._handleFallbackAutoScroll);
     },
     dragOverCompleted: function(e) {
       var o = e.originalEvent;
       !this.options.dragOverBubble && !o.rootEl && this._handleAutoScroll(o);
     },
     drop: function() {
-      this.sortable.nativeDraggable ? $(document, "dragover", this._handleAutoScroll) : ($(document, "pointermove", this._handleFallbackAutoScroll), $(document, "touchmove", this._handleFallbackAutoScroll), $(document, "mousemove", this._handleFallbackAutoScroll)), Si(), bo(), hl();
+      this.sortable.nativeDraggable ? W(document, "dragover", this._handleAutoScroll) : (W(document, "pointermove", this._handleFallbackAutoScroll), W(document, "touchmove", this._handleFallbackAutoScroll), W(document, "mousemove", this._handleFallbackAutoScroll)), Si(), bo(), hl();
     },
     nulling: function() {
       _o = an = Ae = ln = Le = Ko = Go = null, et.length = 0;
@@ -4484,16 +4484,16 @@ var Zo = cr(function(n, t, e, o) {
     an !== e && (an = e, bo(), Ae = t.scroll, h = t.scrollFn, Ae === !0 && (Ae = Xt(e, !0)));
     var d = 0, u = Ae;
     do {
-      var f = u, p = nt(f), b = p.top, O = p.bottom, B = p.left, _ = p.right, E = p.width, v = p.height, m = void 0, T = void 0, D = f.scrollWidth, S = f.scrollHeight, y = R(f), A = f.scrollLeft, w = f.scrollTop;
+      var f = u, p = nt(f), b = p.top, O = p.bottom, B = p.left, _ = p.right, E = p.width, v = p.height, m = void 0, T = void 0, D = f.scrollWidth, S = f.scrollHeight, y = P(f), A = f.scrollLeft, w = f.scrollTop;
       f === l ? (m = E < D && (y.overflowX === "auto" || y.overflowX === "scroll" || y.overflowX === "visible"), T = v < S && (y.overflowY === "auto" || y.overflowY === "scroll" || y.overflowY === "visible")) : (m = E < D && (y.overflowX === "auto" || y.overflowX === "scroll"), T = v < S && (y.overflowY === "auto" || y.overflowY === "scroll"));
       var k = m && (Math.abs(_ - i) <= s && A + E < D) - (Math.abs(B - i) <= s && !!A), x = T && (Math.abs(O - r) <= s && w + v < S) - (Math.abs(b - r) <= s && !!w);
       if (!et[d])
         for (var M = 0; M <= d; M++)
           et[M] || (et[M] = {});
       (et[d].vx != k || et[d].vy != x || et[d].el !== f) && (et[d].el = f, et[d].vx = k, et[d].vy = x, clearInterval(et[d].pid), (k != 0 || x != 0) && (c = !0, et[d].pid = setInterval(function() {
-        o && this.layer === 0 && P.active._onTouchMove(_o);
+        o && this.layer === 0 && F.active._onTouchMove(_o);
         var I = et[this.layer].vy ? et[this.layer].vy * a : 0, L = et[this.layer].vx ? et[this.layer].vx * a : 0;
-        typeof h == "function" && h.call(P.dragged.parentNode[bt], L, I, n, _o, et[this.layer].el) !== "continue" || dr(et[this.layer].el, L, I);
+        typeof h == "function" && h.call(F.dragged.parentNode[bt], L, I, n, _o, et[this.layer].el) !== "continue" || dr(et[this.layer].el, L, I);
       }.bind({
         layer: d
       }), 24))), d++;
@@ -4543,8 +4543,8 @@ On.prototype = {
 Ft(On, {
   pluginName: "removeOnSpill"
 });
-P.mount(new Il());
-P.mount(On, Mn);
+F.mount(new Il());
+F.mount(On, Mn);
 function Ml() {
   return {
     $template: "#title-input"
@@ -4581,7 +4581,7 @@ async function Ll(n, t, e) {
   const o = await fetch(oo + "/tour/steps/" + t, {
     method: "PATCH",
     headers: {
-      Authorization: "Bearer " + n,
+      Authorization: (R.isWeb3 ? "web3 " : "web2 ") + n,
       "Content-Type": "application/json"
     },
     body: JSON.stringify({ steps: e })
@@ -4596,11 +4596,11 @@ async function wr(n) {
   if (!(!n.target.files || n.target.files.length === 0))
     try {
       const t = new FormData();
-      t.set("files", n.target.files[0]), t.set("project_id", F.projectId);
+      t.set("files", n.target.files[0]), t.set("project_id", R.projectId);
       const e = await fetch(oo + "/upload", {
         method: "PUT",
         headers: {
-          Authorization: "Bearer " + F.accessToken
+          Authorization: (R.isWeb3 ? "web3 " : "web2 ") + R.accessToken
         },
         body: t
       });
@@ -4619,10 +4619,10 @@ function Ci() {
     $template: "#image-input",
     async uploadImage(n) {
       const t = await wr(n);
-      F.newStep.mediaURL = await (t == null ? void 0 : t.text());
+      R.newStep.mediaURL = await (t == null ? void 0 : t.text());
     },
     addImageStep() {
-      !F.newStep.mediaURL || !F.newStep.title || (F.newStep.content += `<br /><img src="${F.newStep.mediaURL}" style="width: 100%; margin-top: 1rem;" />`, F.addNewStep());
+      !R.newStep.mediaURL || !R.newStep.title || (R.newStep.content += `<br /><img src="${R.newStep.mediaURL}" style="width: 100%; margin-top: 1rem;" />`, R.addNewStep());
     }
   };
 }
@@ -4631,16 +4631,16 @@ function Ti() {
     $template: "#video-input",
     async uploadVideo(n) {
       const t = await wr(n);
-      F.newStep.mediaURL = await (t == null ? void 0 : t.text());
+      R.newStep.mediaURL = await (t == null ? void 0 : t.text());
     },
     addVideoStep() {
-      !F.newStep.mediaURL || !F.newStep.title || (F.newStep.content += `
+      !R.newStep.mediaURL || !R.newStep.title || (R.newStep.content += `
               <br />
               <video style="width: 100%; margin-top: 1rem" autoplay controls>
-                <source src="${F.newStep.mediaURL}" type="video/mp4">
+                <source src="${R.newStep.mediaURL}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-          `, F.addNewStep());
+          `, R.addNewStep());
     }
   };
 }
@@ -4868,14 +4868,14 @@ function Sr(n) {
   const t = Vl();
   return n = n.replace(/shift/gi, "⇧").replace(/backspace/gi, "⌫").replace(/enter/gi, "⏎").replace(/up/gi, "↑").replace(/left/gi, "→").replace(/down/gi, "↓").replace(/right/gi, "←").replace(/escape/gi, "⎋").replace(/insert/gi, "Ins").replace(/delete/gi, "␡").replace(/\+/gi, " + "), t.mac ? n = n.replace(/ctrl|cmd/gi, "⌘").replace(/alt/gi, "⌥") : n = n.replace(/cmd/gi, "Ctrl").replace(/windows/gi, "WIN"), n;
 }
-function $l(n) {
+function Wl(n) {
   try {
     return new URL(n).href;
   } catch {
   }
   return n.substring(0, 2) === "//" ? window.location.protocol + n : window.location.origin + n;
 }
-function Wl() {
+function $l() {
   return Pl(10);
 }
 function Xl(n) {
@@ -6049,7 +6049,7 @@ function tc(n, t) {
   return s || a;
 }
 const un = "redactor dom changed", _r = "block changed", Ir = "fake cursor is about to be toggled", Mr = "fake cursor have been set";
-var Wt = /* @__PURE__ */ ((n) => (n.APPEND_CALLBACK = "appendCallback", n.RENDERED = "rendered", n.MOVED = "moved", n.UPDATED = "updated", n.REMOVED = "removed", n.ON_PASTE = "onPaste", n))(Wt || {});
+var $t = /* @__PURE__ */ ((n) => (n.APPEND_CALLBACK = "appendCallback", n.RENDERED = "rendered", n.MOVED = "moved", n.UPDATED = "updated", n.REMOVED = "removed", n.ON_PASTE = "onPaste", n))($t || {});
 class ot extends Po {
   /**
    * @param options - block constructor options
@@ -6061,7 +6061,7 @@ class ot extends Po {
    * @param [eventBus] - Editor common event bus. Allows to subscribe on some Editor events. Could be omitted when "virtual" Block is created. See BlocksAPI@composeBlockData.
    */
   constructor({
-    id: t = Wl(),
+    id: t = $l(),
     data: e,
     tool: o,
     api: i,
@@ -8250,7 +8250,7 @@ class Ht {
     this.iterator.currentItem && this.iterator.currentItem.scrollIntoViewIfNeeded(), this.flipCallbacks.forEach((t) => t());
   }
 }
-class $e {
+class We {
   /**
    * Styles
    */
@@ -8300,11 +8300,11 @@ class $e {
    * @param placeholder - input placeholder
    */
   render(t) {
-    this.wrapper = g.make("div", $e.CSS.wrapper);
-    const e = g.make("div", $e.CSS.icon, {
+    this.wrapper = g.make("div", We.CSS.wrapper);
+    const e = g.make("div", We.CSS.icon, {
       innerHTML: Dc
     });
-    this.input = g.make("input", $e.CSS.input, {
+    this.input = g.make("input", We.CSS.input, {
       placeholder: t
     }), this.wrapper.appendChild(e), this.wrapper.appendChild(this.input), this.listeners.on(this.input, "input", () => {
       this.searchQuery = this.input.value, this.onSearch(this.searchQuery, this.foundItems);
@@ -8462,7 +8462,7 @@ const it = class extends Po {
    * Adds search to the popover
    */
   addSearch() {
-    this.search = new $e({
+    this.search = new We({
       items: this.items,
       placeholder: this.messages.search,
       onSearch: (t, e) => {
@@ -9007,8 +9007,8 @@ class Yc {
   }
 }
 const Ie = new Yc();
-var Vc = Object.defineProperty, $c = Object.getOwnPropertyDescriptor, Dr = (n, t, e, o) => {
-  for (var i = o > 1 ? void 0 : o ? $c(t, e) : t, r = n.length - 1, s; r >= 0; r--)
+var Vc = Object.defineProperty, Wc = Object.getOwnPropertyDescriptor, Dr = (n, t, e, o) => {
+  for (var i = o > 1 ? void 0 : o ? Wc(t, e) : t, r = n.length - 1, s; r >= 0; r--)
     (s = n[r]) && (i = (o ? s(t, e, i) : s(i)) || i);
   return o && i && Vc(t, e, i), i;
 }, vo = /* @__PURE__ */ ((n) => (n.Opened = "toolbox-opened", n.Closed = "toolbox-closed", n.BlockAdded = "toolbox-block-added", n))(vo || {});
@@ -9190,7 +9190,7 @@ const Rr = class extends Po {
       void 0,
       o.isEmpty
     );
-    s.call(Wt.APPEND_CALLBACK), this.api.caret.setToBlock(i), this.emit("toolbox-block-added", {
+    s.call($t.APPEND_CALLBACK), this.api.caret.setToBlock(i), this.emit("toolbox-block-added", {
       block: s
     }), this.api.toolbar.close();
   }
@@ -9203,7 +9203,7 @@ Dr([
   Me
 ], Pn.prototype, "toolboxItemsToBeDisplayed", 1);
 const Pr = "block hovered";
-class Wc extends V {
+class $c extends V {
   /**
    * @class
    * @param moduleConfiguration - Module Configuration
@@ -10072,7 +10072,7 @@ class Jo {
       fromIndex: e,
       toIndex: t
     });
-    o.call(Wt.MOVED, a);
+    o.call($t.MOVED, a);
   }
   /**
    * Insert new Block at passed index
@@ -10086,7 +10086,7 @@ class Jo {
       this.push(e);
       return;
     }
-    t > this.length && (t = this.length), o && (this.blocks[t].holder.remove(), this.blocks[t].call(Wt.REMOVED));
+    t > this.length && (t = this.length), o && (this.blocks[t].holder.remove(), this.blocks[t].call($t.REMOVED));
     const i = o ? 1 : 0;
     if (this.blocks.splice(t, i, e), t > 0) {
       const r = this.blocks[t - 1];
@@ -10102,13 +10102,13 @@ class Jo {
    * @param {number} index - index of Block to remove
    */
   remove(t) {
-    isNaN(t) && (t = this.length - 1), this.blocks[t].holder.remove(), this.blocks[t].call(Wt.REMOVED), this.blocks.splice(t, 1);
+    isNaN(t) && (t = this.length - 1), this.blocks[t].holder.remove(), this.blocks[t].call($t.REMOVED), this.blocks.splice(t, 1);
   }
   /**
    * Remove all blocks
    */
   removeAll() {
-    this.workingArea.innerHTML = "", this.blocks.forEach((t) => t.call(Wt.REMOVED)), this.blocks.length = 0;
+    this.workingArea.innerHTML = "", this.blocks.forEach((t) => t.call($t.REMOVED)), this.blocks.length = 0;
   }
   /**
    * Insert Block after passed target
@@ -10147,7 +10147,7 @@ class Jo {
    * @param {Block} target — Block related to position
    */
   insertToDOM(t, e, o) {
-    e ? o.holder.insertAdjacentElement(e, t.holder) : this.workingArea.appendChild(t.holder), t.call(Wt.RENDERED);
+    e ? o.holder.insertAdjacentElement(e, t.holder) : this.workingArea.appendChild(t.holder), t.call($t.RENDERED);
   }
   /**
    * Composes Block event with passed type and details
@@ -10383,7 +10383,7 @@ class qc extends V {
       replace: o
     });
     try {
-      i.call(Wt.ON_PASTE, e);
+      i.call($t.ON_PASTE, e);
     } catch (r) {
       z(`${t}: onPaste callback call is failed`, "error", r);
     }
@@ -11881,7 +11881,7 @@ class od extends V {
     );
   }
 }
-class We extends V {
+class $e extends V {
   constructor() {
     super(...arguments), this.isRectSelectionActivated = !1, this.SCROLL_SPEED = 3, this.HEIGHT_OF_SCROLL_ZONE = 40, this.BOTTOM_SCROLL_ZONE = 1, this.TOP_SCROLL_ZONE = 2, this.MAIN_MOUSE_BUTTON = 0, this.mousedown = !1, this.isScrolling = !1, this.inScrollZone = null, this.startX = 0, this.startY = 0, this.mouseX = 0, this.mouseY = 0, this.stackOfSelected = [], this.listenerIds = [];
   }
@@ -12013,7 +12013,7 @@ class We extends V {
    * @returns {Object<string, Element>}
    */
   genHTML() {
-    const { UI: t } = this.Editor, e = t.nodes.holder.querySelector("." + t.CSS.editorWrapper), o = g.make("div", We.CSS.overlay, {}), i = g.make("div", We.CSS.overlayContainer, {}), r = g.make("div", We.CSS.rect, {});
+    const { UI: t } = this.Editor, e = t.nodes.holder.querySelector("." + t.CSS.editorWrapper), o = g.make("div", $e.CSS.overlay, {}), i = g.make("div", $e.CSS.overlayContainer, {}), r = g.make("div", $e.CSS.rect, {});
     return i.appendChild(r), o.appendChild(i), e.appendChild(o), this.overlayRectangle = r, {
       container: e,
       overlay: o
@@ -13171,7 +13171,7 @@ class Vr {
   }
 }
 Vr.isTune = !0;
-class $r {
+class Wr {
   /**
    * DeleteTune constructor
    *
@@ -13201,8 +13201,8 @@ class $r {
     this.api.blocks.delete();
   }
 }
-$r.isTune = !0;
-class Wr {
+Wr.isTune = !0;
+class $r {
   /**
    * MoveUpTune constructor
    *
@@ -13236,7 +13236,7 @@ class Wr {
     a.top > 0 ? l = Math.abs(s.top) - Math.abs(a.top) : l = Math.abs(s.top) + a.height, window.scrollBy(0, -1 * l), this.api.blocks.move(t - 1), this.api.toolbar.toggleBlockSettings(!0);
   }
 }
-Wr.isTune = !0;
+$r.isTune = !0;
 var ud = Object.defineProperty, pd = Object.getOwnPropertyDescriptor, fd = (n, t, e, o) => {
   for (var i = o > 1 ? void 0 : o ? pd(t, e) : t, r = n.length - 1, s; r >= 0; r--)
     (s = n[r]) && (i = (o ? s(t, e, i) : s(i)) || i);
@@ -13351,11 +13351,11 @@ class Xr extends V {
         isInternal: !0
       },
       moveUp: {
-        class: Wr,
+        class: $r,
         isInternal: !0
       },
       delete: {
-        class: $r,
+        class: Wr,
         isInternal: !0
       },
       moveDown: {
@@ -13803,7 +13803,7 @@ class md extends V {
     }, i = t.target, r = t.metaKey || t.ctrlKey;
     if (g.isAnchor(i) && r) {
       o();
-      const c = i.getAttribute("href"), h = $l(c);
+      const c = i.getAttribute("href"), h = Wl(c);
       Xl(h);
       return;
     }
@@ -13859,7 +13859,7 @@ const bd = {
   // Toolbar Modules
   BlockSettings: jc,
   ConversionToolbar: kt,
-  Toolbar: Wc,
+  Toolbar: $c,
   InlineToolbar: Xc,
   // Modules
   BlockEvents: Kc,
@@ -13871,7 +13871,7 @@ const bd = {
   ModificationsObserver: ed,
   Paste: Ur,
   ReadOnly: od,
-  RectangleSelection: We,
+  RectangleSelection: $e,
   Renderer: nd,
   Saver: id,
   Tools: Xr,
@@ -14531,10 +14531,10 @@ function Gr(n, t) {
       }
     }
   });
-  return e.addSteps(n || F.steps), e;
+  return e.addSteps(n || R.steps), e;
 }
 function Zr(n) {
-  F.newStep.activeElement = n;
+  R.newStep.activeElement = n;
   const t = new Dt.Tour({
     useModalOverlay: !0,
     defaultStepOptions: {
@@ -14542,7 +14542,7 @@ function Zr(n) {
         enabled: !0
       }
     }
-  }), e = F.newStep.activeType;
+  }), e = R.newStep.activeType;
   let o, i, r = {
     element: (n == null ? void 0 : n.tagName) + "[data-untitled-tour]",
     on: "top"
@@ -14559,17 +14559,17 @@ function Zr(n) {
       {
         text: "Done",
         action() {
-          e === "image" ? Ci().addImageStep() : e === "video" ? Ti().addVideoStep() : F.addNewStep(e === "banner");
+          e === "image" ? Ci().addImageStep() : e === "video" ? Ti().addVideoStep() : R.addNewStep(e === "banner");
         }
       }
     ]
   }), ["complete", "cancel"].forEach(
     (s) => t.on(s, () => {
-      n == null || n.removeAttribute("data-untitled-tour"), F.newStep.title = "", F.newStep.content = "", F.newStep.activeType = "", F.newStep.position = "top", F.newStep.activeElement = null;
+      n == null || n.removeAttribute("data-untitled-tour"), R.newStep.title = "", R.newStep.content = "", R.newStep.activeType = "", R.newStep.position = "top", R.newStep.activeElement = null;
     })
   ), t.start(), Ri({
     // Global Store
-    store: F,
+    store: R,
     // Components
     TitleInput: Ml,
     ContentInput: Ol,
@@ -14577,7 +14577,7 @@ function Zr(n) {
     VideoInput: Ti,
     BannerInput: Nl,
     PositionInput: Dl
-  }).mount(".shepherd-content"), e === "banner" && (F.newStep.activeEditor = new wd({
+  }).mount(".shepherd-content"), e === "banner" && (R.newStep.activeEditor = new wd({
     holder: "banner-editor",
     tools: {
       header: yd
@@ -14677,7 +14677,7 @@ function Ni(n, t = !1, e) {
       } : void 0
     };
   });
-  F.steps = i;
+  R.steps = i;
   const r = Gr(i, e);
   if (window.ProductTour.restart = r.start, window.ProductTour.tour = r, t) {
     const s = new CustomEvent("stepChanged", {
@@ -14688,15 +14688,15 @@ function Ni(n, t = !1, e) {
   return r.start;
 }
 function Ed(n) {
-  F.newStep.activeType = n;
+  R.newStep.activeType = n;
   const t = (e) => {
-    e.key === "Escape" && (F.setEditMode(!1), window.removeEventListener("keydown", t));
+    e.key === "Escape" && (R.setEditMode(!1), window.removeEventListener("keydown", t));
   };
-  window.addEventListener("keydown", t), n !== "banner" ? F.setEditMode(!0) : Zr();
+  window.addEventListener("keydown", t), n !== "banner" ? R.setEditMode(!0) : Zr();
 }
 const Sd = ["HTML", "BODY"];
 function Cd(n = !1) {
-  n ? (document.addEventListener("click", $n, !0), document.addEventListener("mousemove", Di), document.addEventListener("mouseleave", Wn, !0)) : (document.removeEventListener("click", $n, !0), document.removeEventListener("mousemove", Di), document.removeEventListener("mouseleave", Wn, !0));
+  n ? (document.addEventListener("click", Wn, !0), document.addEventListener("mousemove", Di), document.addEventListener("mouseleave", $n, !0)) : (document.removeEventListener("click", Wn, !0), document.removeEventListener("mousemove", Di), document.removeEventListener("mouseleave", $n, !0));
 }
 function Di(n) {
   var o;
@@ -14704,12 +14704,12 @@ function Di(n) {
   if ((o = document.getElementById("untitled-main")) != null && o.contains(t))
     return;
   const e = document.getElementById("label");
-  n.stopPropagation(), e.style.left = n.x + 15 + "px", e.style.top = n.y + 15 + "px", t && !Sd.includes(t.tagName) ? (F.setHovered(t), Td(t)) : e.style.display = "none";
+  n.stopPropagation(), e.style.left = n.x + 15 + "px", e.style.top = n.y + 15 + "px", t && !Sd.includes(t.tagName) ? (R.setHovered(t), Td(t)) : e.style.display = "none";
 }
 function Td(n) {
   if (n) {
     let t = function(o) {
-      F.editMode ? (o.stopPropagation(), F.selected && F.selected.classList.remove("untitled_selected"), F.setSelected(n), n.classList.remove("hovered"), n.classList.add("untitled_selected"), n.setAttribute("data-untitled-tour", ""), F.setEditMode(!1), Zr(n)) : n.removeEventListener("click", t);
+      R.editMode ? (o.stopPropagation(), R.selected && R.selected.classList.remove("untitled_selected"), R.setSelected(n), n.classList.remove("hovered"), n.classList.add("untitled_selected"), n.setAttribute("data-untitled-tour", ""), R.setEditMode(!1), Zr(n)) : n.removeEventListener("click", t);
     };
     const e = document.getElementById("label");
     e.style.display = "block", n.addEventListener("click", t);
@@ -14717,10 +14717,10 @@ function Td(n) {
 }
 function Bd(n) {
   const t = document.getElementById(n);
-  t ? new P(t, {
+  t ? new F(t, {
     animation: 200,
     onUpdate(e) {
-      ts(F.steps, e.oldIndex, e.newIndex);
+      ts(R.steps, e.oldIndex, e.newIndex);
     }
   }) : console.warn("Unable to set up drag-and-drop sorting for tour steps");
 }
@@ -14732,7 +14732,7 @@ function _d() {
     timeout: null,
     async saveSteps() {
       try {
-        this.loading = !0, await Ll(F.accessToken, F.tourId, F.steps), this.message = "Saved", this.timeout && clearTimeout(this.timeout), this.timeout = setTimeout(() => {
+        this.loading = !0, await Ll(R.accessToken, R.tourId, R.steps), this.message = "Saved", this.timeout && clearTimeout(this.timeout), this.timeout = setTimeout(() => {
           this.message = "";
         }, 2e3), this.loading = !1;
       } catch (n) {
@@ -14743,15 +14743,15 @@ function _d() {
     }
   };
 }
-async function Id(n) {
-  const t = await fetch(oo + "/user", {
+async function Id(n, t) {
+  const e = await fetch(oo + "/user", {
     headers: {
-      Authorization: "Bearer " + n
+      Authorization: (t ? "web3 " : "web2 ") + n
     }
   });
-  if (t.status === 400)
+  if (e.status === 400)
     throw console.error("Unauthorized for Admin Mode"), new Error("Unauthorized for Admin Mode");
-  return await t.json();
+  return await e.json();
 }
 function Md(n) {
   const t = document.querySelector(":root");
@@ -14900,40 +14900,40 @@ function vn(n) {
       </template>
 `, document.body.append(i);
   async function r() {
-    var c;
+    var h;
     if (!o)
       return;
-    F.projectId = o;
-    const s = new URLSearchParams(window.location.search), a = s.get("tourToken"), l = s.get("tourId");
+    R.projectId = o;
+    const s = new URLSearchParams(window.location.search), a = s.get("tourToken"), l = s.get("tourId"), c = s.get("is_web3") === "true";
     if (a && a.length > 0) {
-      if (F.accessToken = a, F.tourId = l, !l)
+      if (R.accessToken = a, R.tourId = l, R.isWeb3 = c, !l)
         return;
-      Id(a).then(async () => {
-        const h = await Al(l);
-        h && F.setSteps(h), F.setAdminMode(!0);
+      Id(a, c).then(async () => {
+        const d = await Al(l);
+        d && R.setSteps(d), R.setAdminMode(!0);
       }).catch(() => {
         console.error("Unable to validate access token");
       });
     } else {
-      const h = await vr(o);
-      if (!h || !h.steps)
+      const d = await vr(o);
+      if (!d || !d.steps)
         return;
-      Md(h.theme.details);
-      const d = Ni(h.steps, !1, {
-        useModalOverlay: ((c = h.theme.details.find(
-          (u) => u.id === "modalOverlay"
-        )) == null ? void 0 : c.value) ?? !0
+      Md(JSON.parse(d.theme.details));
+      const u = Ni(d.steps, !1, {
+        useModalOverlay: ((h = JSON.parse(d.theme.details).find(
+          (f) => f.id === "modalOverlay"
+        )) == null ? void 0 : h.value) ?? !0
       });
       if (!xd()) {
-        const u = new CustomEvent("stepChanged", {
+        const f = new CustomEvent("stepChanged", {
           detail: 1
         });
-        window.dispatchEvent(u), d();
+        window.dispatchEvent(f), u();
       }
     }
     Ri({
       // Global Store
-      store: F,
+      store: R,
       // Functions
       parseSteps: Ni,
       beginEdit: Ed,
