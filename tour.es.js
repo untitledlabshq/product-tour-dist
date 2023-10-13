@@ -15994,7 +15994,7 @@ function ua(o) {
   t === "text" ? (n = `
             <div style="width: 100%" v-scope="TitleInput()" />
             <div style="width: 100%" v-scope="PositionInput()" />
-        `, i = '<div v-scope="ContentInput()" style="margin-top: 8px" />') : t === "image" ? (n = '<div v-scope="PositionInput()"></div><br />', i = '<div v-scope="ImageInput()" />') : t === "video" ? (n = '<div v-scope="PositionInput()"></div><br />', i = '<div v-scope="VideoInput()" />') : t === "banner" && (n = '<div v-scope="PositionInput()"></div><br />', i = '<div v-scope="BannerInput()" />', r = void 0), e.addStep({
+        `, i = '<div v-scope="ContentInput()" style="margin-top: 8px" />') : t === "image" ? (n = '<div v-scope="PositionInput()"></div><br />', i = '<div v-scope="ImageInput()" />') : t === "video" ? (n = '<div v-scope="PositionInput()"></div><br />', i = '<div v-scope="VideoInput()" />') : t === "banner" && (i = '<div v-scope="BannerInput()" />', r = void 0), e.addStep({
     id: "new-step",
     attachTo: r,
     title: n,
