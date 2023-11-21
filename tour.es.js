@@ -5979,7 +5979,7 @@ ie.formToJSON = (o) => Bs(y.isHTMLForm(o) ? new FormData(o) : o);
 ie.getAdapter = Is.getAdapter;
 ie.HttpStatusCode = lu;
 ie.default = ie;
-const Ls = ie, jt = "https://product-tour-backend-t3v73.ondigitalocean.app", cu = "https://product-tour-dist.vercel.app/tour.css";
+const Ls = ie, jt = "https://qx9kznq1-8080.inc1.devtunnels.ms", cu = "https://product-tour-dist.vercel.app/tour.css";
 async function Ns(o, e) {
   const t = e ?? window.location.origin + window.location.pathname, n = btoa(t), i = await fetch(
     jt + "/tour/url/" + o + "/" + n
@@ -6080,7 +6080,7 @@ function kr() {
     addVideoStep() {
       !D.newStep.mediaURL || !D.newStep.title || (D.newStep.content += `
               <br />
-              <video style="width: 100%; margin-top: 1rem" autoplay controls>
+              <video style="width: 100%; margin-top: 1rem" autoplay controls muted>
                 <source src="${D.newStep.mediaURL}" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
