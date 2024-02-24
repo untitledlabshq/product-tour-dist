@@ -15985,7 +15985,8 @@ function ha(o) {
       cancelIcon: {
         enabled: !0
       }
-    }
+    },
+    keyboardNavigation: !1
   }), t = D.newStep.activeType;
   let n, i, r = {
     element: (o == null ? void 0 : o.tagName) + "[data-untitled-tour]",
